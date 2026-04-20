@@ -11,24 +11,19 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd /home/ubuntu/cloud-resume-project
-            git pull origin main
-            sudo rsync -av --delete \
-              --exclude ".git" \
-              --exclude ".github" \
-              --exclude "README.md" \
-              /home/ubuntu/cloud-resume-project/ /var/www/html/
-            sudo systemctl reload nginx
+      - name: Sync site files
+        run: |
+          sudo rsync -av --delete \
+            --exclude ".git" \
+            --exclude ".github" \
+            --exclude "README.md" \
+            "$GITHUB_WORKSPACE/" /var/www/html/
+
+      - name: Reload Nginx
+        run: sudo systemctl reload nginx
