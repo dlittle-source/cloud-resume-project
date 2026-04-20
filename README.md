@@ -1,6 +1,7 @@
 # Cloud Resume Project (DevOps + AWS + CI/CD + Containers)
 
-A production-style cloud deployment project demonstrating multiple DevOps strategies:
+A production-style cloud deployment project demonstrating real-world DevOps practices across infrastructure, CI/CD automation, and containerized cloud deployments.
+
 - EC2 + Nginx + HTTPS deployment
 - CI/CD automation with GitHub Actions (self-hosted runner)
 - Containerization with Docker
@@ -43,17 +44,17 @@ Docker → Amazon ECR → ECS Fargate → Public IP
 
 ## CI/CD Pipeline
 
-1. Code pushed to GitHub
-2. GitHub Actions triggers deployment
+1. Code is pushed to GitHub
+2. GitHub Actions workflow is triggered
 3. Self-hosted runner executes on EC2
-4. Repository updates pulled
-5. Files synced to /var/www/html via rsync
-6. Nginx reloads automatically
+4. Latest changes are pulled from repository
+5. Files are synchronized to `/var/www/html` using rsync
+6. Nginx is reloaded to apply updates
 
 For container deployment:
-- Docker image built locally
-- Pushed to Amazon ECR
-- ECS service created for demo deployment
+- Docker image is built locally
+- Image is pushed to Amazon ECR
+- ECS service is created for on-demand deployment
 
 ## Security
 
@@ -65,11 +66,40 @@ For container deployment:
 
 ## Screenshots
 
-- EC2 Deployment (Nginx + HTTPS)
-- GitHub Actions Pipeline
-- ECR Repository with Image
-- ECS Running Task (Fargate)
-- Application running via public IP
+### 🌐 EC2 + Nginx (HTTPS)
+![EC2 App](./screenshots/ec2-nginx-app.png)
+- Application deployed on AWS EC2
+- Served using Nginx and secured with HTTPS (Certbot)
+
+---
+
+### ⚙️ CI/CD Pipeline (GitHub Actions)
+![Pipeline](./screenshots/github-actions.png)
+- Automated deployment triggered on push to `main`
+- Uses a self-hosted runner on EC2
+- Syncs files using `rsync` and reloads Nginx
+
+---
+
+### 📦 Amazon ECR (Docker Image)
+![ECR](./screenshots/ecr-repository.png)
+- Docker image stored in Amazon ECR
+- Used as the deployment artifact for ECS
+
+---
+
+### 🚀 ECS Fargate Deployment
+![ECS](./screenshots/ecs-running-task.png)
+- Container deployed using AWS ECS Fargate
+- Running task with `awsvpc` networking and public IP
+- Demonstrates serverless container deployment
+
+---
+
+### 🌐 Application via ECS Public IP
+![ECS App](./screenshots/ecs-public-ip-app.png)
+- Application accessible via ECS task public IP
+- Confirms successful container deployment
 
 ## Lessons Learned
 
@@ -81,7 +111,8 @@ For container deployment:
 
 ## Future Improvements
 
-- Automate Docker build and push using GitHub Actions
-- Deploy ECS via CI/CD pipeline (OIDC + IAM roles)
-- Add monitoring with CloudWatch
-- Implement Infrastructure as Code using Terraform
+- Implement full CI/CD pipeline for container deployment (GitHub Actions → ECR → ECS using OIDC)
+- Add monitoring and logging with Amazon CloudWatch
+- Manage infrastructure using Terraform (Infrastructure as Code)
+- Introduce blue/green deployment strategy for zero-downtime releases
+
