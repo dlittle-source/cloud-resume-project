@@ -1,5 +1,7 @@
 # Cloud Resume Project (DevOps + AWS + CI/CD + Containers)
 
+![CI](https://github.com/dlittle-source/cloud-resume-project/actions/workflows/deploy.yml/badge.svg)
+
 A production-style cloud deployment project demonstrating real-world DevOps practices across infrastructure, CI/CD automation, and containerized cloud deployments.
 
 - EC2 + Nginx + HTTPS deployment
