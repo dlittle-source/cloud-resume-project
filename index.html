@@ -91,7 +91,7 @@
     .features,
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 28px;
       margin-top: 30px;
     }
@@ -117,6 +117,80 @@
     .icon {
       font-size: 3rem;
       margin-bottom: 14px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      color: #204f7a;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      font-size: 1.05rem;
+      color: #444;
+      margin-bottom: 18px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .project-tags span {
+      background: #e8f1fb;
+      color: #1f5e9c;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project-link {
+      display: inline-block;
+      text-decoration: none;
+      background: #0d5cc0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-link:hover {
+      background: #0a4da2;
+      transform: translateY(-2px);
+    }
+
+    .project-link.secondary {
+      background: transparent;
+      color: #0d5cc0;
+      border: 2px solid #0d5cc0;
+    }
+
+    .project-link.secondary:hover {
+      background: #e8f1fb;
     }
 
     .contact {
@@ -162,6 +236,14 @@
       .contact h2 {
         font-size: 2rem;
       }
+
+      .project-card {
+        text-align: center;
+      }
+
+      .project-actions {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -203,16 +285,80 @@
 
   <section class="section" id="projects">
     <h2>Current Projects</h2>
+    <p class="lead">
+      Explore the projects below to view source code, deployment workflows, and live demos.
+    </p>
 
     <div class="projects">
-      <div class="card">
-        <h3>EC2 Website Deployment</h3>
-        <p>Live static website hosted on AWS EC2 and served with Nginx.</p>
+      <div class="project-card">
+        <h3>Cloud Resume Project</h3>
+        <p>
+          Production-style cloud deployment project demonstrating EC2 hosting, Nginx, HTTPS,
+          GitHub Actions CI/CD, Docker, Amazon ECR, and ECS Fargate.
+        </p>
+
+        <div class="project-tags">
+          <span>AWS</span>
+          <span>Nginx</span>
+          <span>CI/CD</span>
+          <span>Docker</span>
+          <span>ECS</span>
+        </div>
+
+        <div class="project-actions">
+          <a
+            class="project-link"
+            href="https://github.com/dlittle-source/cloud-resume-project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Repo
+          </a>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>API Backend</h3>
-        <p>Backend service deployment and Linux-based process management for cloud applications.</p>
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>
+          Placeholder for your next cloud or DevOps project. Update this card when your second project is ready.
+        </p>
+
+        <div class="project-tags">
+          <span>Coming Soon</span>
+        </div>
+
+        <div class="project-actions">
+          <a
+            class="project-link"
+            href="https://github.com/dlittle-source"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Profile
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>
+          Placeholder for your third project. This keeps the layout balanced until the next repo is published.
+        </p>
+
+        <div class="project-tags">
+          <span>Coming Soon</span>
+        </div>
+
+        <div class="project-actions">
+          <a
+            class="project-link"
+            href="https://github.com/dlittle-source"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Profile
+          </a>
+        </div>
       </div>
     </div>
   </section>
