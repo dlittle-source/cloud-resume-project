@@ -96,20 +96,23 @@
       margin-top: 30px;
     }
 
-    .card {
+    .card,
+    .project-card {
       background: white;
       border-radius: 16px;
       padding: 28px 22px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .card h3 {
+    .card h3,
+    .project-card h3 {
       font-size: 1.5rem;
       color: #204f7a;
       margin-bottom: 12px;
     }
 
-    .card p {
+    .card p,
+    .project-card p {
       font-size: 1.05rem;
       color: #444;
     }
@@ -120,10 +123,6 @@
     }
 
     .project-card {
-      background: white;
-      border-radius: 16px;
-      padding: 28px 22px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       text-align: left;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -133,15 +132,7 @@
       box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
     }
 
-    .project-card h3 {
-      font-size: 1.5rem;
-      color: #204f7a;
-      margin-bottom: 12px;
-    }
-
     .project-card p {
-      font-size: 1.05rem;
-      color: #444;
       margin-bottom: 18px;
     }
 
@@ -318,41 +309,47 @@
       </div>
 
       <div class="project-card">
-  <h3>Dockerized AWS Web App</h3>
-  <p>
-    Production-style containerized web deployment demonstrating Docker, Docker Compose,
-    Nginx reverse proxy, AWS EC2 hosting, Linux server administration, and security
-    group hardening.
-  </p>
-
-  <div class="project-tags">
-    <span>AWS</span>
-    <span>Docker</span>
-    <span>Nginx</span>
-    <span>Compose</span>
-    <span>Linux</span>
-  </div>
-
-  <div class="project-actions">
-    <a
-      class="project-link"
-      href="https://github.com/dlittle-source/docker-nginx-aws-project"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      View Repo
-    </a>
-  </div>
-</div>
-
-      <div class="project-card">
-        <h3>Project 3</h3>
+        <h3>Dockerized AWS Web App</h3>
         <p>
-          Placeholder for your third project. This keeps the layout balanced until the next repo is published.
+          Production-style containerized web deployment demonstrating Docker, Docker Compose,
+          Nginx reverse proxy, AWS EC2 hosting, Linux server administration, and security
+          group hardening.
         </p>
 
         <div class="project-tags">
-          <span>Coming Soon</span>
+          <span>AWS</span>
+          <span>Docker</span>
+          <span>Nginx</span>
+          <span>Compose</span>
+          <span>Linux</span>
+        </div>
+
+        <div class="project-actions">
+          <a
+            class="project-link"
+            href="https://github.com/dlittle-source/docker-nginx-aws-project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Repo
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Automated CI/CD Deployment Pipeline</h3>
+        <p>
+          Production-style CI/CD deployment pipeline demonstrating GitHub Actions automation,
+          Dockerized application deployment, AWS EC2 hosting, Nginx reverse proxy configuration,
+          deployment scripting, health validation, and security group hardening.
+        </p>
+
+        <div class="project-tags">
+          <span>GitHub Actions</span>
+          <span>Docker</span>
+          <span>AWS EC2</span>
+          <span>Nginx</span>
+          <span>CI/CD</span>
         </div>
 
         <div class="project-actions">
@@ -362,7 +359,14 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub Profile
+            View GitHub Repo
+          </a>
+
+          <a
+            class="project-link secondary"
+            href="#projects"
+          >
+            View Project Details
           </a>
         </div>
       </div>
