@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cloud Resume Projects</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -125,11 +126,28 @@
     .project-card {
       text-align: left;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-top: 4px solid transparent;
     }
 
     .project-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-card.featured {
+      border-top: 4px solid #0d5cc0;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: #0d5cc0;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
     }
 
     .project-card p {
@@ -172,16 +190,6 @@
     .project-link:hover {
       background: #0a4da2;
       transform: translateY(-2px);
-    }
-
-    .project-link.secondary {
-      background: transparent;
-      color: #0d5cc0;
-      border: 2px solid #0d5cc0;
-    }
-
-    .project-link.secondary:hover {
-      background: #e8f1fb;
     }
 
     .contact {
@@ -235,57 +243,85 @@
       .project-actions {
         justify-content: center;
       }
+
+      .project-tags {
+        justify-content: center;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <section class="hero">
     <div class="hero-content">
       <h1>Cloud Resume Projects</h1>
-      <p>Demarko Little | AWS Certified | DevOps Engineer</p>
+
+      <p>
+        Demarko Little | AWS Certified | DevOps & AI Infrastructure Engineer
+      </p>
+
       <a class="btn" href="#projects">View My Projects</a>
     </div>
   </section>
 
   <section class="section">
     <h2>About the Project</h2>
+
     <p class="lead">
-      Hands-on cloud projects showcasing my skills in AWS, DevOps, Linux, Nginx, and modern deployment workflows.
+      Hands-on cloud and AI infrastructure projects showcasing production deployments,
+      Dockerized architectures, CI/CD automation, observability systems, Linux operations,
+      AWS cloud engineering, and modern DevOps workflows.
     </p>
 
     <div class="features">
+
       <div class="card">
         <div class="icon">☁️</div>
         <h3>AWS & EC2</h3>
-        <p>Deploying and managing cloud infrastructure in live environments.</p>
+        <p>
+          Deploying and managing cloud infrastructure in live production-style environments.
+        </p>
       </div>
 
       <div class="card">
         <div class="icon">⚙️</div>
         <h3>Nginx & Linux</h3>
-        <p>Configuring web servers, system services, permissions, and core Linux operations.</p>
+        <p>
+          Configuring reverse proxies, Linux services, permissions, networking,
+          and operational infrastructure systems.
+        </p>
       </div>
 
       <div class="card">
         <div class="icon">🚀</div>
         <h3>CI/CD Pipelines</h3>
-        <p>Building repeatable deployment workflows for faster and safer releases.</p>
+        <p>
+          Building automated deployment workflows for scalable and repeatable production releases.
+        </p>
       </div>
+
     </div>
   </section>
 
   <section class="section" id="projects">
+
     <h2>Current Projects</h2>
+
     <p class="lead">
-      Explore the projects below to view source code, deployment workflows, and production-style documentation.
+      Explore the projects below to view source code, deployment workflows,
+      observability systems, and production-style engineering documentation.
     </p>
 
     <div class="projects">
+
       <div class="project-card">
         <h3>Cloud Resume Project</h3>
+
         <p>
-          Production-style cloud deployment project demonstrating EC2 hosting, Nginx, HTTPS,
-          GitHub Actions CI/CD, Docker, Amazon ECR, and ECS Fargate.
+          Production-style cloud deployment project demonstrating EC2 hosting,
+          Nginx, HTTPS, GitHub Actions CI/CD, Docker, Amazon ECR,
+          and ECS Fargate.
         </p>
 
         <div class="project-tags">
@@ -310,10 +346,11 @@
 
       <div class="project-card">
         <h3>Dockerized AWS Web App</h3>
+
         <p>
-          Production-style containerized web deployment demonstrating Docker, Docker Compose,
-          Nginx reverse proxy, AWS EC2 hosting, Linux server administration, and security
-          group hardening.
+          Production-style containerized web deployment demonstrating Docker,
+          Docker Compose, Nginx reverse proxy, AWS EC2 hosting,
+          Linux server administration, and security group hardening.
         </p>
 
         <div class="project-tags">
@@ -338,10 +375,12 @@
 
       <div class="project-card">
         <h3>Automated CI/CD Deployment Pipeline</h3>
+
         <p>
           Production-style CI/CD deployment pipeline demonstrating GitHub Actions automation,
-          Dockerized application deployment, AWS EC2 hosting, Nginx reverse proxy configuration,
-          deployment scripting, health validation, and security group hardening.
+          Dockerized application deployment, AWS EC2 hosting,
+          Nginx reverse proxy configuration, deployment scripting,
+          health validation, and security group hardening.
         </p>
 
         <div class="project-tags">
@@ -366,10 +405,13 @@
 
       <div class="project-card">
         <h3>AI Support Ticket Triage Platform</h3>
+
         <p>
-          Production-style AI support ticket triage platform demonstrating Dockerized frontend and backend services,
-          Docker Compose orchestration, AWS EC2 deployment, Nginx reverse proxy, GitHub Actions CI/CD,
-          automated health validation, and rollback workflow support.
+          Production-style AI support ticket triage platform demonstrating
+          Dockerized frontend and backend services, Docker Compose orchestration,
+          AWS EC2 deployment, Nginx reverse proxy,
+          GitHub Actions CI/CD, automated health validation,
+          and rollback workflow support.
         </p>
 
         <div class="project-tags">
@@ -391,18 +433,71 @@
           </a>
         </div>
       </div>
+
+      <div class="project-card featured">
+
+        <div class="project-badge">
+          FLAGSHIP PROJECT
+        </div>
+
+        <h3>AI InfraWatch</h3>
+
+        <p>
+          Enterprise-style AI infrastructure observability platform demonstrating
+          real-time telemetry, operational metrics dashboards,
+          infrastructure topology monitoring, deployment history tracking,
+          CI/CD pipeline visualization, AI incident analysis,
+          Dockerized services, AWS EC2 deployment,
+          Nginx reverse proxy integration,
+          and GitHub Actions CI/CD automation.
+        </p>
+
+        <div class="project-tags">
+          <span>AI</span>
+          <span>Observability</span>
+          <span>Docker</span>
+          <span>AWS EC2</span>
+          <span>Nginx</span>
+          <span>CI/CD</span>
+        </div>
+
+        <div class="project-actions">
+          <a
+            class="project-link"
+            href="https://github.com/dlittle-source/ai-infrawatch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Repo
+          </a>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
   <section class="contact">
+
     <h2>Get in Touch</h2>
-    <p>Contact me for collaboration, cloud projects, or DevOps opportunities.</p>
+
+    <p>
+      Contact me for collaboration, cloud engineering,
+      DevOps opportunities, or AI infrastructure projects.
+    </p>
+
     <p>Email: dmrk_little@yahoo.com</p>
-    <p>LinkedIn: https://linkedin.com/in/demarkol</p>
+
+    <p>
+      LinkedIn:
+      https://linkedin.com/in/demarkol
+    </p>
+
   </section>
 
   <footer>
     <p>© 2026 Cloud Resume Projects. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
