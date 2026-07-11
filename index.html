@@ -221,6 +221,99 @@
       transform: translateY(-2px);
     }
 
+
+    .enterprise-rag {
+      max-width: 1300px;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: #dcecff;
+      color: #0d5cc0;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 1.4px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .rag-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 18px;
+      margin: 10px 0 42px;
+    }
+
+    .rag-summary-card {
+      background: #071c36;
+      color: white;
+      padding: 24px 18px;
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(7, 28, 54, 0.14);
+    }
+
+    .rag-summary-card strong {
+      display: block;
+      color: #78b7ff;
+      font-size: 1.65rem;
+      margin-bottom: 4px;
+    }
+
+    .rag-summary-card span {
+      font-size: 0.95rem;
+      color: #e3ebf5;
+    }
+
+    .rag-projects {
+      align-items: stretch;
+    }
+
+    .rag-card {
+      display: flex;
+      flex-direction: column;
+      border-top-width: 5px;
+    }
+
+    .rag-card.completed {
+      border-top-color: #198754;
+    }
+
+    .rag-card.in-progress {
+      border-top-color: #d98b00;
+    }
+
+    .rag-complete {
+      background: #198754;
+    }
+
+    .rag-progress {
+      background: #d98b00;
+    }
+
+    .rag-capabilities {
+      background: #f5f8fc;
+      border: 1px solid #dbe5ef;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: auto;
+    }
+
+    .rag-capabilities h4 {
+      color: #204f7a;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .rag-capabilities ul {
+      padding-left: 20px;
+      color: #444;
+    }
+
+    .rag-capabilities li {
+      margin-bottom: 6px;
+    }
+
     .contact {
       background:
         linear-gradient(rgba(7, 28, 54, 0.78), rgba(7, 28, 54, 0.78)),
@@ -290,7 +383,7 @@
         Demarko Little | Cloud Infrastructure Engineer | DevOps | AI Platforms
       </p>
 
-      <a class="btn" href="#projects">View My Projects</a>
+      <a class="btn" href="#enterprise-rag">Explore Enterprise AI</a>
     </div>
   </section>
 
@@ -541,6 +634,136 @@
     </div>
   </section>
 
+
+  <section class="section enterprise-rag" id="enterprise-rag">
+
+    <div class="section-label">ENTERPRISE AI PORTFOLIO</div>
+
+    <h2>Enterprise Retrieval-Augmented Generation</h2>
+
+    <p class="lead">
+      A progressive Enterprise RAG engineering portfolio demonstrating
+      document ingestion, semantic retrieval, hybrid search, conversational memory,
+      source attribution, production architecture, security, observability,
+      and scalable AI platform design.
+    </p>
+
+    <div class="rag-summary">
+      <div class="rag-summary-card"><strong>3</strong><span>Completed RAG Systems</span></div>
+      <div class="rag-summary-card"><strong>1</strong><span>Production System in Progress</span></div>
+      <div class="rag-summary-card"><strong>Enterprise</strong><span>Architecture Focus</span></div>
+      <div class="rag-summary-card"><strong>End-to-End</strong><span>RAG Engineering</span></div>
+    </div>
+
+    <div class="projects rag-projects">
+
+      <article class="project-card rag-card completed">
+        <div class="project-badge rag-complete">COMPLETED</div>
+        <h3>Mini RAG #1 — End-to-End RAG</h3>
+        <p>
+          Built a complete Retrieval-Augmented Generation pipeline that loads
+          enterprise documents, divides content into chunks, creates vector embeddings,
+          stores them in a vector database, retrieves relevant context,
+          constructs grounded prompts, and generates source-supported answers.
+        </p>
+        <div class="project-tags">
+          <span>Python</span><span>ChromaDB</span><span>Embeddings</span>
+          <span>Vector Search</span><span>FLAN-T5</span><span>Source Attribution</span>
+        </div>
+        <div class="rag-capabilities">
+          <h4>Core capabilities</h4>
+          <ul>
+            <li>Document loading and chunking</li>
+            <li>Vector embedding generation</li>
+            <li>Semantic similarity search</li>
+            <li>Top-K context retrieval</li>
+            <li>Grounded answer generation</li>
+            <li>Source citation and attribution</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card rag-card completed">
+        <div class="project-badge rag-complete">COMPLETED</div>
+        <h3>Mini RAG #2 — Enterprise Retrieval</h3>
+        <p>
+          Expanded the foundational pipeline into an enterprise retrieval system
+          supporting multiple documents, metadata-aware search, department filtering,
+          hybrid retrieval, result merging, re-ranking, retrieval evaluation,
+          and production-style source attribution.
+        </p>
+        <div class="project-tags">
+          <span>Hybrid Search</span><span>Metadata Filtering</span><span>Re-ranking</span>
+          <span>Keyword Search</span><span>Retrieval Evaluation</span><span>Top-K</span>
+        </div>
+        <div class="rag-capabilities">
+          <h4>Core capabilities</h4>
+          <ul>
+            <li>Multi-document ingestion</li>
+            <li>Document and department metadata</li>
+            <li>Vector and keyword retrieval</li>
+            <li>Hybrid result merging</li>
+            <li>Enterprise re-ranking</li>
+            <li>Retrieval quality evaluation</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card rag-card completed">
+        <div class="project-badge rag-complete">COMPLETED</div>
+        <h3>Mini RAG #3 — Conversational RAG</h3>
+        <p>
+          Engineered a conversational RAG architecture with session management,
+          short-term and long-term memory, history-aware query processing,
+          memory-aware retrieval, prompt orchestration, conversation windowing,
+          and summarization.
+        </p>
+        <div class="project-tags">
+          <span>Conversation Memory</span><span>Session Management</span><span>Query Rewriting</span>
+          <span>Memory Retrieval</span><span>Summarization</span><span>Orchestration</span>
+        </div>
+        <div class="rag-capabilities">
+          <h4>Core capabilities</h4>
+          <ul>
+            <li>Conversation session management</li>
+            <li>History-aware query processing</li>
+            <li>Memory-aware document retrieval</li>
+            <li>Short-term memory windowing</li>
+            <li>Long-term memory summarization</li>
+            <li>Scalable memory orchestration</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card rag-card in-progress">
+        <div class="project-badge rag-progress">IN PROGRESS</div>
+        <h3>Enterprise RAG #4 — Production RAG Systems</h3>
+        <p>
+          Extending the RAG portfolio into production engineering with secure
+          deployment architecture, API services, containerization, monitoring,
+          evaluation, reliability, access control, governance, operational support,
+          and scalable enterprise infrastructure.
+        </p>
+        <div class="project-tags">
+          <span>Production Architecture</span><span>Security</span><span>Monitoring</span>
+          <span>Deployment</span><span>Reliability</span><span>Governance</span>
+        </div>
+        <div class="rag-capabilities">
+          <h4>Production focus</h4>
+          <ul>
+            <li>Secure RAG service deployment</li>
+            <li>Application and retrieval monitoring</li>
+            <li>Production evaluation pipelines</li>
+            <li>Access control and data governance</li>
+            <li>Reliability and failure handling</li>
+            <li>Scalable operational architecture</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
   <section class="contact">
 
     <h2>Get in Touch</h2>
@@ -565,4 +788,3 @@
 
 </body>
 </html>
-
