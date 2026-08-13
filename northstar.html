@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NorthStar Terraform Platform | DemarkoCloud Case Study</title>
+
+  <meta
+    name="description"
+    content="NorthStar Terraform Platform case study demonstrating AWS infrastructure automation, Terraform, GitHub Actions CI/CD, security, application delivery, and CloudWatch observability."
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NorthStar Terraform Platform | DemarkoCloud" />
+  <meta
+    property="og:description"
+    content="A production-style AWS infrastructure platform built with Terraform, GitHub Actions, security controls, automated delivery, and CloudWatch observability."
+  />
+  <meta
+    property="og:image"
+    content="https://www.demarkocloud.com/screenshots/northstar/northstar-operations-hero.png"
+  />
+  <meta
+    property="og:url"
+    content="https://www.demarkocloud.com/northstar.html"
+  />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter / Social Preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="NorthStar Terraform Platform | DemarkoCloud"
+  />
+  <meta
+    name="twitter:description"
+    content="AWS infrastructure engineered with Terraform, GitHub Actions CI/CD, security, monitoring, and repeatable automation."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.demarkocloud.com/screenshots/northstar/northstar-operations-hero.png"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6f9;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Navigation */
+
+    .topbar {
+      background: #071c36;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #d8e4f2;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #78b7ff;
+    }
+
+    /* Hero */
+
+    .case-hero {
+      background:
+        radial-gradient(circle at top right, rgba(28, 109, 205, 0.28), transparent 42%),
+        linear-gradient(135deg, #071c36 0%, #0c274b 100%);
+      color: white;
+      padding: 88px 20px 78px;
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(120, 183, 255, 0.13);
+      border: 1px solid rgba(120, 183, 255, 0.28);
+      color: #78b7ff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .case-hero h1 {
+      font-size: 4rem;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .case-hero h1 span {
+      color: #78b7ff;
+    }
+
+    .hero-subtitle {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      font-size: 1.3rem;
+      color: #dce8f7;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 54px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #0d5cc0;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0a4da2;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero-image-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(120, 183, 255, 0.25);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.34);
+      background: #061426;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+    }
+
+    /* Snapshot */
+
+    .snapshot {
+      max-width: 1100px;
+      margin: -34px auto 0;
+      position: relative;
+      z-index: 5;
+      padding: 0 20px;
+    }
+
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(7, 28, 54, 0.13);
+    }
+
+    .snapshot-item {
+      padding: 28px 18px;
+      text-align: center;
+      border-right: 1px solid #e4ebf3;
+    }
+
+    .snapshot-item:last-child {
+      border-right: none;
+    }
+
+    .snapshot-item strong {
+      display: block;
+      color: #0d5cc0;
+      font-size: 1.7rem;
+      margin-bottom: 4px;
+    }
+
+    .snapshot-item span {
+      color: #4c5968;
+      font-size: 0.95rem;
+      font-weight: bold;
+    }
+
+    /* Main case study */
+
+    .case-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 82px 20px;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: #dcecff;
+      color: #0d5cc0;
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 1.4px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 15px;
+    }
+
+    .section-heading {
+      font-size: 2.6rem;
+      color: #1f5e9c;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      max-width: 850px;
+      font-size: 1.16rem;
+      color: #46515f;
+      margin-bottom: 36px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .story-card {
+      background: white;
+      border-radius: 18px;
+      padding: 34px;
+      box-shadow: 0 10px 28px rgba(7, 28, 54, 0.08);
+    }
+
+    .story-card h3 {
+      color: #204f7a;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .story-card p {
+      color: #46515f;
+      margin-bottom: 14px;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .image-card {
+      background: white;
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: 0 10px 28px rgba(7, 28, 54, 0.09);
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .image-caption {
+      padding: 14px 8px 4px;
+      color: #647180;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .dark-section {
+      background: #071c36;
+      color: white;
+    }
+
+    .dark-section .case-section {
+      padding-top: 82px;
+      padding-bottom: 82px;
+    }
+
+    .dark-section .section-heading {
+      color: white;
+    }
+
+    .dark-section .section-intro {
+      color: #cbd9e9;
+    }
+
+    .dark-section .story-card {
+      background: #102b4d;
+      box-shadow: none;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dark-section .story-card h3 {
+      color: #78b7ff;
+    }
+
+    .dark-section .story-card p {
+      color: #d8e4f2;
+    }
+
+    .dark-section .image-card {
+      background: #0c2442;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dark-section .image-caption {
+      color: #b9c9db;
+    }
+
+    /* Callout */
+
+    .architecture-callout {
+      margin-top: 36px;
+      background: #eaf3fd;
+      border-left: 5px solid #0d5cc0;
+      border-radius: 12px;
+      padding: 24px 26px;
+      color: #33475b;
+    }
+
+    .architecture-callout strong {
+      color: #1f5e9c;
+    }
+
+    /* Security cards */
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .capability-card {
+      background: white;
+      border-radius: 15px;
+      padding: 26px 22px;
+      box-shadow: 0 8px 22px rgba(7, 28, 54, 0.07);
+      border-top: 4px solid #0d5cc0;
+    }
+
+    .capability-card h3 {
+      color: #204f7a;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .capability-card p {
+      color: #505c69;
+      font-size: 0.98rem;
+    }
+
+    /* CI/CD */
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin: 35px 0 44px;
+    }
+
+    .pipeline-step {
+      background: white;
+      border-radius: 12px;
+      padding: 18px 12px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(7, 28, 54, 0.07);
+      font-weight: bold;
+      color: #204f7a;
+      border-bottom: 3px solid #0d5cc0;
+    }
+
+    .two-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    /* Results */
+
+    .results-section {
+      background: linear-gradient(135deg, #f7faff 0%, #e9f2fc 100%);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .result-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 8px 22px rgba(7, 28, 54, 0.07);
+    }
+
+    .result-card strong {
+      display: block;
+      color: #0d5cc0;
+      font-size: 1.55rem;
+      margin-bottom: 8px;
+    }
+
+    .result-card p {
+      color: #4c5968;
+    }
+
+    /* Technology */
+
+    .technology-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .technology-strip span {
+      background: #e8f1fb;
+      color: #1f5e9c;
+      font-weight: bold;
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-size: 0.92rem;
+    }
+
+    /* CTA */
+
+    .cta {
+      background:
+        radial-gradient(circle at top left, rgba(13, 92, 192, 0.34), transparent 45%),
+        #071c36;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta-inner {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-size: 2.7rem;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: #d2dfed;
+      font-size: 1.15rem;
+      margin-bottom: 28px;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    footer {
+      background: #041426;
+      color: #d6dde8;
+      text-align: center;
+      padding: 22px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .case-hero h1 {
+        font-size: 3rem;
+      }
+
+      .snapshot-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .snapshot-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .snapshot-item:nth-child(1),
+      .snapshot-item:nth-child(2) {
+        border-bottom: 1px solid #e4ebf3;
+      }
+
+      .story-grid,
+      .two-images {
+        grid-template-columns: 1fr;
+      }
+
+      .capability-grid,
+      .results-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .pipeline {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .case-hero {
+        padding-top: 60px;
+      }
+
+      .case-hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.08rem;
+      }
+
+      .snapshot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .snapshot-item {
+        border-right: none;
+        border-bottom: 1px solid #e4ebf3;
+      }
+
+      .snapshot-item:last-child {
+        border-bottom: none;
+      }
+
+      .section-heading {
+        font-size: 2.1rem;
+      }
+
+      .capability-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-card {
+        padding: 26px 22px;
+      }
+
+      .cta h2 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Demarko Cloud Solutions</a>
+
+      <nav class="nav-links" aria-label="Case study navigation">
+        <a href="#problem">Problem</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#automation">Automation</a>
+        <a href="#security">Security</a>
+        <a href="#cicd">CI/CD</a>
+        <a href="#monitoring">Monitoring</a>
+        <a href="#results">Results</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Hero -->
+  <section class="case-hero">
+    <div class="hero-inner">
+
+      <div class="eyebrow">CLOUD PLATFORM ENGINEERING CASE STUDY</div>
+
+      <h1>
+        NorthStar <span>Terraform Platform</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A production-style AWS infrastructure platform engineered with Terraform,
+        secure cloud architecture, automated GitHub Actions delivery, centralized
+        monitoring, and repeatable Infrastructure as Code workflows.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="btn btn-primary"
+          href="https://github.com/dlittle-source/northstar-terraform-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View GitHub Repository
+        </a>
+
+        <a class="btn btn-secondary" href="index.html">
+          Back to Portfolio
+        </a>
+
+      </div>
+
+      <div class="hero-image-wrap">
+        <img
+          src="screenshots/northstar/northstar-operations-hero.png"
+          alt="NorthStar Operations cloud platform interface showing platform health, 61 managed AWS resources, automated CI/CD, and CloudWatch monitoring"
+        />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Snapshot -->
+  <section class="snapshot" aria-label="NorthStar project highlights">
+    <div class="snapshot-grid">
+
+      <div class="snapshot-item">
+        <strong>61</strong>
+        <span>AWS Resources</span>
+      </div>
+
+      <div class="snapshot-item">
+        <strong>8</strong>
+        <span>Engineering Phases</span>
+      </div>
+
+      <div class="snapshot-item">
+        <strong>Terraform</strong>
+        <span>Infrastructure as Code</span>
+      </div>
+
+      <div class="snapshot-item">
+        <strong>CI/CD</strong>
+        <span>Automated Delivery</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Business Problem -->
+  <section class="case-section" id="problem">
+
+    <div class="section-label">BUSINESS PROBLEM</div>
+
+    <h2 class="section-heading">
+      Cloud infrastructure must be repeatable, secure, and operationally visible.
+    </h2>
+
+    <p class="section-intro">
+      Modern application teams need infrastructure that can be deployed consistently,
+      protected by design, monitored from day one, and changed without relying on
+      fragile manual configuration.
+    </p>
+
+    <div class="story-grid">
+
+      <div class="story-card">
+        <h3>The Challenge</h3>
+
+        <p>
+          Manually provisioned cloud environments create configuration drift,
+          inconsistent security controls, deployment risk, and operational overhead.
+        </p>
+
+        <p>
+          NorthStar was designed to demonstrate how those concerns can be addressed
+          through modular Infrastructure as Code, secure AWS architecture, automated
+          delivery pipelines, and built-in observability.
+        </p>
+      </div>
+
+      <div class="story-card">
+        <h3>Engineering Objective</h3>
+
+        <p>
+          Build a production-style AWS platform that could be recreated reliably
+          from source control while maintaining clear separation between networking,
+          security, compute, application delivery, monitoring, and CI/CD automation.
+        </p>
+
+        <p>
+          The goal was not simply to launch an application. The goal was to engineer
+          the platform supporting it.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Solution -->
+  <section class="dark-section">
+
+    <div class="case-section">
+
+      <div class="section-label">SOLUTION</div>
+
+      <h2 class="section-heading">
+        An automated AWS platform built as code.
+      </h2>
+
+      <p class="section-intro">
+        NorthStar combines modular Terraform, AWS networking, private compute,
+        centralized security controls, application load balancing, GitHub Actions,
+        CloudWatch monitoring, and operational alerting into one repeatable platform.
+      </p>
+
+      <div class="story-grid">
+
+        <div class="story-card">
+          <h3>Infrastructure Designed as a Platform</h3>
+
+          <p>
+            The environment was organized into reusable Terraform modules covering
+            networking, security, compute, application delivery, and monitoring.
+          </p>
+
+          <p>
+            Application workloads run behind an Application Load Balancer while the
+            EC2 application server remains in a private subnet, reducing unnecessary
+            direct exposure to the internet.
+          </p>
+        </div>
+
+        <div class="image-card">
+          <img
+            src="screenshots/northstar/northstar-operations-hero.png"
+            alt="NorthStar application deployment through AWS infrastructure"
+            loading="lazy"
+          />
+          <div class="image-caption">
+            NorthStar Operations deployed through the automated AWS platform.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Architecture -->
+  <section class="case-section" id="architecture">
+
+    <div class="section-label">AWS ARCHITECTURE</div>
+
+    <h2 class="section-heading">
+      Layered infrastructure with public and private network boundaries.
+    </h2>
+
+    <p class="section-intro">
+      NorthStar uses a structured VPC design separating internet-facing,
+      application, and database network tiers while supporting controlled outbound
+      connectivity and centralized traffic visibility.
+    </p>
+
+    <div class="story-grid">
+
+      <div class="image-card">
+        <img
+          src="screenshots/northstar/aws-architecture-vpc.png"
+          alt="AWS VPC architecture for the NorthStar Terraform Platform"
+          loading="lazy"
+        />
+        <div class="image-caption">
+          NorthStar VPC and subnet architecture deployed through Terraform.
+        </div>
+      </div>
+
+      <div class="story-card">
+        <h3>Architecture Highlights</h3>
+
+        <p>
+          The platform provisions a dedicated VPC with public, application,
+          and database subnet tiers distributed across availability zones.
+        </p>
+
+        <p>
+          Public infrastructure supports controlled internet access and load balancing,
+          while the application workload remains private and communicates through
+          explicitly defined routing and security boundaries.
+        </p>
+
+        <p>
+          VPC Flow Logs provide network-level visibility for troubleshooting,
+          auditing, and operational monitoring.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="architecture-callout">
+      <strong>Engineering principle:</strong>
+      application workloads do not need to be directly internet-facing simply because
+      users need to reach the application. The load balancer becomes the controlled
+      public entry point while compute remains private.
+    </div>
+
+  </section>
+
+
+  <!-- Terraform -->
+  <section class="dark-section" id="automation">
+
+    <div class="case-section">
+
+      <div class="section-label">TERRAFORM AUTOMATION</div>
+
+      <h2 class="section-heading">
+        Infrastructure lifecycle managed from source control.
+      </h2>
+
+      <p class="section-intro">
+        Terraform defines the NorthStar environment as reusable code instead of
+        relying on manual AWS Console configuration.
+      </p>
+
+      <div class="story-grid">
+
+        <div class="story-card">
+          <h3>Repeatable Infrastructure</h3>
+
+          <p>
+            Networking, security, compute, application delivery, monitoring,
+            IAM, logging, and supporting services are provisioned through Terraform.
+          </p>
+
+          <p>
+            The configuration uses modular components and environment-specific
+            variables so infrastructure behavior can be changed deliberately while
+            preserving a consistent deployment workflow.
+          </p>
+
+          <p>
+            Remote Terraform state is maintained in Amazon S3 so infrastructure state
+            is separated from the engineer's local workstation.
+          </p>
+        </div>
+
+        <div class="image-card">
+          <img
+            src="screenshots/northstar/terraform-ci.png"
+            alt="GitHub Actions Terraform CI validation and plan for NorthStar"
+            loading="lazy"
+          />
+          <div class="image-caption">
+            Automated Terraform validation and infrastructure planning through GitHub Actions.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Security -->
+  <section class="case-section" id="security">
+
+    <div class="section-label">SECURITY</div>
+
+    <h2 class="section-heading">
+      Security controls were built into the platform architecture.
+    </h2>
+
+    <p class="section-intro">
+      NorthStar applies layered controls across network access, identity,
+      encryption, auditing, instance management, and application exposure.
+    </p>
+
+    <div class="two-images">
+
+      <div class="image-card">
+        <img
+          src="screenshots/northstar/security-groups.png"
+          alt="NorthStar AWS security groups"
+          loading="lazy"
+        />
+        <div class="image-caption">
+          Security groups enforce workload-specific network access.
+        </div>
+      </div>
+
+      <div class="image-card">
+        <img
+          src="screenshots/northstar/systems-manager.png"
+          alt="NorthStar EC2 instance managed through AWS Systems Manager"
+          loading="lazy"
+        />
+        <div class="image-caption">
+          Systems Manager supports controlled instance administration without traditional inbound SSH exposure.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="capability-grid">
+
+      <div class="capability-card">
+        <h3>Private Compute</h3>
+        <p>
+          Application compute resides in private networking rather than being
+          directly exposed to the public internet.
+        </p>
+      </div>
+
+      <div class="capability-card">
+        <h3>IAM & Systems Manager</h3>
+        <p>
+          IAM roles and AWS Systems Manager provide controlled operational
+          access to the application server.
+        </p>
+      </div>
+
+      <div class="capability-card">
+        <h3>Encryption & Audit</h3>
+        <p>
+          Encrypted storage, KMS-backed controls, CloudTrail, and centralized
+          logging strengthen auditability and data protection.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CI/CD -->
+  <section class="dark-section" id="cicd">
+
+    <div class="case-section">
+
+      <div class="section-label">GITHUB ACTIONS CI/CD</div>
+
+      <h2 class="section-heading">
+        Infrastructure delivery moved from manual execution to automated workflows.
+      </h2>
+
+      <p class="section-intro">
+        GitHub Actions validates Terraform changes, creates infrastructure plans,
+        authenticates securely to AWS using OIDC, and executes controlled deployments.
+      </p>
+
+      <div class="pipeline">
+
+        <div class="pipeline-step">Git Push</div>
+        <div class="pipeline-step">Terraform Validate</div>
+        <div class="pipeline-step">Terraform Plan</div>
+        <div class="pipeline-step">AWS OIDC</div>
+        <div class="pipeline-step">Terraform Deploy</div>
+
+      </div>
+
+      <div class="two-images">
+
+        <div class="image-card">
+          <img
+            src="screenshots/northstar/terraform-ci.png"
+            alt="NorthStar Terraform GitHub Actions CI workflow"
+            loading="lazy"
+          />
+          <div class="image-caption">
+            CI workflow validates configuration and produces the Terraform plan.
+          </div>
+        </div>
+
+        <div class="image-card">
+          <img
+            src="screenshots/northstar/terraform-deploy.png"
+            alt="NorthStar Terraform GitHub Actions deployment workflow"
+            loading="lazy"
+          />
+          <div class="image-caption">
+            Deployment workflow provisions the AWS environment through Terraform.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Monitoring -->
+  <section class="case-section" id="monitoring">
+
+    <div class="section-label">MONITORING & OBSERVABILITY</div>
+
+    <h2 class="section-heading">
+      Operational visibility is part of the platform, not an afterthought.
+    </h2>
+
+    <p class="section-intro">
+      NorthStar integrates CloudWatch dashboards, metrics, alarms, VPC Flow Logs,
+      and SNS notifications to provide visibility into infrastructure health and
+      application delivery.
+    </p>
+
+    <div class="story-grid">
+
+      <div class="story-card">
+        <h3>Platform Health at a Glance</h3>
+
+        <p>
+          CloudWatch provides centralized visibility across EC2 and Application
+          Load Balancer metrics, allowing platform health to be evaluated without
+          inspecting individual resources manually.
+        </p>
+
+        <p>
+          CloudWatch alarms and SNS notifications establish an operational response
+          path when monitored conditions move outside expected thresholds.
+        </p>
+
+        <p>
+          The result is infrastructure designed not only to deploy successfully,
+          but also to remain observable after deployment.
+        </p>
+      </div>
+
+      <div class="image-card">
+        <img
+          src="screenshots/northstar/cloudwatch-dashboard.png"
+          alt="NorthStar Amazon CloudWatch monitoring dashboard"
+          loading="lazy"
+        />
+        <div class="image-caption">
+          Centralized CloudWatch dashboard for NorthStar infrastructure monitoring.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Results -->
+  <section class="results-section" id="results">
+
+    <div class="case-section">
+
+      <div class="section-label">RESULTS</div>
+
+      <h2 class="section-heading">
+        A complete infrastructure lifecycle — designed, automated, deployed, observed, and removed as code.
+      </h2>
+
+      <p class="section-intro">
+        NorthStar demonstrates the complete engineering lifecycle of a modern AWS
+        environment rather than a collection of disconnected cloud resources.
+      </p>
+
+      <div class="results-grid">
+
+        <div class="result-card">
+          <strong>61 Resources</strong>
+          <p>
+            A multi-layer AWS environment provisioned and managed through Terraform.
+          </p>
+        </div>
+
+        <div class="result-card">
+          <strong>8 Engineering Phases</strong>
+          <p>
+            Networking through CI/CD implemented as an incremental platform build.
+          </p>
+        </div>
+
+        <div class="result-card">
+          <strong>Automated Delivery</strong>
+          <p>
+            GitHub Actions handles Terraform validation, planning, authentication,
+            and infrastructure deployment.
+          </p>
+        </div>
+
+        <div class="result-card">
+          <strong>Private Application Tier</strong>
+          <p>
+            Application compute remains private while traffic is delivered through
+            an Application Load Balancer.
+          </p>
+        </div>
+
+        <div class="result-card">
+          <strong>Built-In Observability</strong>
+          <p>
+            CloudWatch dashboards, alarms, metrics, logs, and SNS provide operational visibility.
+          </p>
+        </div>
+
+        <div class="result-card">
+          <strong>Repeatable Lifecycle</strong>
+          <p>
+            The complete environment can be created and destroyed through Terraform,
+            supporting controlled lifecycle management and cost discipline.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="technology-strip" aria-label="Technologies used">
+
+        <span>AWS</span>
+        <span>Terraform</span>
+        <span>GitHub Actions</span>
+        <span>OIDC</span>
+        <span>Amazon VPC</span>
+        <span>EC2</span>
+        <span>Application Load Balancer</span>
+        <span>IAM</span>
+        <span>Systems Manager</span>
+        <span>Amazon S3</span>
+        <span>AWS KMS</span>
+        <span>CloudTrail</span>
+        <span>CloudWatch</span>
+        <span>SNS</span>
+        <span>Nginx</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+
+    <div class="cta-inner">
+
+      <div class="eyebrow">ENGINEERING EVIDENCE</div>
+
+      <h2>Explore the NorthStar Terraform Platform</h2>
+
+      <p>
+        Review the source code, Terraform modules, engineering documentation,
+        GitHub Actions workflows, and complete eight-phase implementation in the
+        NorthStar repository.
+      </p>
+
+      <div class="cta-actions">
+
+        <a
+          class="btn btn-primary"
+          href="https://github.com/dlittle-source/northstar-terraform-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View GitHub Repository
+        </a>
+
+        <a class="btn btn-secondary" href="index.html">
+          Back to DemarkoCloud
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    <p>© 2026 Demarko Cloud Solutions. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
