@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DemarkoCloud provides practical AWS cloud architecture reviews, Terraform and CI/CD automation, cloud reliability improvements, and AI application infrastructure services for small businesses and technical teams." />
 
-  <title>Demarko Cloud Solutions | AI & DevOps Portfolio</title>
+  <title>DemarkoCloud | Cloud, DevOps & AI Infrastructure Consulting</title>
 
   <!-- Open Graph / LinkedIn Preview -->
-  <meta property="og:title" content="Cloud Infrastructure & AI Platform Portfolio" />
+  <meta property="og:title" content="DemarkoCloud | Cloud, DevOps & AI Infrastructure Consulting" />
   <meta
     property="og:description"
-    content="Enterprise cloud, DevOps, observability, AI infrastructure, SaaS-ready platforms, AWS deployments, Dockerized architectures, CI/CD automation, and production operational systems."
+    content="Practical AWS cloud architecture reviews, Terraform and CI/CD automation, reliability improvements, and AI application infrastructure backed by hands-on engineering work."
   />
   <meta
     property="og:image"
@@ -23,11 +24,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta
     name="twitter:title"
-    content="Cloud Infrastructure & AI Platform Portfolio"
+    content="DemarkoCloud | Cloud, DevOps & AI Infrastructure Consulting"
   />
   <meta
     name="twitter:description"
-    content="Enterprise cloud, DevOps, observability, AI infrastructure, SaaS-ready platforms, AWS deployments, Dockerized architectures, CI/CD automation, and production operational systems."
+    content="Practical AWS cloud architecture reviews, Terraform and CI/CD automation, reliability improvements, and AI application infrastructure backed by hands-on engineering work."
   />
   <meta
     name="twitter:image"
@@ -410,20 +411,592 @@
         justify-content: center;
       }
     }
-  </style>
+
+
+    /* DemarkoCloud Readiness Assessment */
+    .assessment-section {
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #eef5fb 0%, #f8fbfe 100%);
+    }
+
+    .assessment-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 18px 50px rgba(7, 28, 54, 0.12);
+      overflow: hidden;
+      border: 1px solid #dbe7f2;
+    }
+
+    .assessment-intro {
+      padding: 48px 42px 34px;
+      text-align: center;
+      background: #071c36;
+      color: white;
+    }
+
+    .assessment-kicker {
+      display: inline-block;
+      background: #dcecff;
+      color: #0d5cc0;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .assessment-intro h2 {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .assessment-intro p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #dce7f3;
+      font-size: 1.12rem;
+    }
+
+    .assessment-body {
+      padding: 40px 42px 46px;
+    }
+
+    .assessment-progress {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      font-weight: 700;
+      color: #204f7a;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 10px;
+      background: #e8eef5;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #0d5cc0, #3c86df);
+      transition: width 0.25s ease;
+    }
+
+    .assessment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .assessment-question {
+      background: #f7faff;
+      border: 1px solid #dbe7f2;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .assessment-question h3 {
+      color: #173f67;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+
+    .assessment-question label {
+      display: block;
+      margin: 9px 0;
+      cursor: pointer;
+      color: #374151;
+    }
+
+    .assessment-question input {
+      margin-right: 8px;
+    }
+
+    .assessment-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .assessment-button {
+      border: 0;
+      background: #0d5cc0;
+      color: white;
+      font-size: 1.08rem;
+      font-weight: 800;
+      padding: 15px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .assessment-button:hover {
+      background: #0a4da2;
+      transform: translateY(-2px);
+    }
+
+    .assessment-results {
+      display: none;
+      margin-top: 36px;
+      padding-top: 30px;
+      border-top: 1px solid #dbe7f2;
+    }
+
+    .score-panel {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .score-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(#0d5cc0 0deg, #e8eef5 0deg);
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .score-circle::after {
+      content: '';
+      position: absolute;
+      width: 122px;
+      height: 122px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .score-value {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #071c36;
+    }
+
+    .score-value strong {
+      display: block;
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .recommendations {
+      margin-top: 26px;
+      display: grid;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .recommendation {
+      background: #f7faff;
+      border-left: 4px solid #0d5cc0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #374151;
+    }
+
+    .consultation-cta {
+      margin-top: 28px;
+      padding: 24px;
+      background: #071c36;
+      color: white;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .consultation-cta h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .consultation-cta p {
+      color: #dce7f3;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .assessment-grid,
+      .score-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .assessment-intro,
+      .assessment-body {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .assessment-intro h2 {
+        font-size: 2rem;
+      }
+    }
+
+  
+    /* DemarkoCloud Assessment v2 */
+    .assessment-category {
+      display: inline-block;
+      background: #e8f1fb;
+      color: #0d5cc0;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .result-category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+      text-align: left;
+    }
+
+    .result-category-card {
+      background: #f7f9fc;
+      border: 1px solid #dbe5ef;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .result-category-card h4 {
+      color: #204f7a;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .category-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0d5cc0;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .category-bar {
+      height: 8px;
+      background: #dfe7f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0 8px;
+    }
+
+    .category-bar span {
+      display: block;
+      height: 100%;
+      background: #0d5cc0;
+      border-radius: 999px;
+    }
+
+    .recommended-service {
+      margin-top: 12px;
+      padding: 11px 12px;
+      background: #eaf3ff;
+      border-radius: 10px;
+      color: #164f87;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .result-next-step {
+      margin-top: 30px;
+      background: #071c36;
+      color: white;
+      padding: 28px;
+      border-radius: 16px;
+      text-align: left;
+    }
+
+    .result-next-step h3 {
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .result-next-step p {
+      color: #e3ebf5;
+      margin-bottom: 18px;
+    }
+
+    .result-next-step .btn {
+      box-shadow: none;
+    }
+
+    .assessment-note {
+      margin-top: 18px;
+      color: #5c6875;
+      font-size: 0.92rem;
+    }
+
+  
+    /* DemarkoCloud Services */
+    .services-section {
+      padding: 78px 20px;
+      background: #eef4fa;
+    }
+
+    .services-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .services-kicker {
+      display: inline-block;
+      background: #dcecff;
+      color: #0d5cc0;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .services-shell h2 {
+      font-size: 2.6rem;
+      color: #1f5e9c;
+      margin-bottom: 14px;
+    }
+
+    .services-lead {
+      max-width: 850px;
+      margin: 0 auto 38px;
+      color: #3f4b59;
+      font-size: 1.15rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 22px;
+      text-align: left;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 9px 26px rgba(7, 28, 54, 0.08);
+      border-top: 4px solid #0d5cc0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: #e8f1fb;
+      color: #0d5cc0;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      color: #163e66;
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #4a5563;
+      margin-bottom: 16px;
+    }
+
+    .service-best-for {
+      background: #f5f8fc;
+      border: 1px solid #dbe5ef;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      color: #34495e;
+    }
+
+    .service-card h4 {
+      color: #204f7a;
+      margin: 2px 0 8px;
+      font-size: 1rem;
+    }
+
+    .service-card ul {
+      padding-left: 20px;
+      color: #444;
+      margin-bottom: 18px;
+    }
+
+    .service-card li {
+      margin-bottom: 7px;
+    }
+
+    .service-deliverable {
+      margin-top: auto;
+      background: #071c36;
+      color: white;
+      padding: 13px 14px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+
+    .services-cta {
+      margin-top: 34px;
+      background: #071c36;
+      color: white;
+      border-radius: 18px;
+      padding: 32px 24px;
+    }
+
+    .services-cta h3 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .services-cta p {
+      color: #dbe5ef;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .services-shell h2 {
+        font-size: 2rem;
+      }
+    }
+
+  
+    /* Consultation Request Workflow */
+    .consultation-section {
+      padding: 78px 20px;
+      background: white;
+    }
+    .consultation-shell {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .consultation-header {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    .consultation-header h2 {
+      font-size: 2.55rem;
+      color: #1f5e9c;
+      margin-bottom: 12px;
+    }
+    .consultation-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #4a5563;
+      font-size: 1.12rem;
+    }
+    .consultation-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .consultation-info, .consultation-form-card {
+      border-radius: 16px;
+      box-shadow: 0 9px 26px rgba(7,28,54,.09);
+    }
+    .consultation-info {
+      background: #071c36;
+      color: white;
+      padding: 28px;
+    }
+    .consultation-info h3 { margin-bottom: 12px; font-size: 1.45rem; }
+    .consultation-info p { color: #dbe5ef; margin-bottom: 18px; }
+    .consultation-info ul { padding-left: 20px; color: #eef4fa; }
+    .consultation-info li { margin-bottom: 10px; }
+    .consultation-form-card {
+      background: #f7f9fc;
+      border: 1px solid #dbe5ef;
+      padding: 28px;
+    }
+    .consultation-form-card h3 {
+      color: #204f7a;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      display: block;
+      color: #26394d;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: .95rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #cbd6e2;
+      border-radius: 9px;
+      background: white;
+      color: #1a1a1a;
+      font: inherit;
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .consultation-submit {
+      border: 0;
+      cursor: pointer;
+      width: 100%;
+    }
+    .consultation-privacy {
+      font-size: .85rem;
+      color: #667483;
+      margin-top: 12px;
+      line-height: 1.45;
+    }
+    .consultation-status {
+      display: none;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #eaf3ff;
+      color: #164f87;
+      font-weight: 700;
+    }
+    @media(max-width:768px) {
+      .consultation-layout, .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+      .consultation-header h2 { font-size: 2rem; }
+    }
+
+
+.how-it-works{padding:78px 20px;background:#071c36;color:white}.how-shell{max-width:1150px;margin:auto;text-align:center}.how-kicker{display:inline-block;background:rgba(120,183,255,.14);color:#78b7ff;font-size:.8rem;font-weight:800;letter-spacing:1.2px;padding:8px 14px;border-radius:999px;margin-bottom:14px}.how-shell h2{font-size:2.6rem;margin-bottom:12px}.how-lead{max-width:820px;margin:0 auto 38px;color:#dbe5ef;font-size:1.15rem}.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:left}.how-card{background:#0d294b;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px 21px}.how-step{width:42px;height:42px;display:grid;place-items:center;background:#0d5cc0;border-radius:50%;font-weight:800;margin-bottom:15px}.how-card h3{font-size:1.3rem;margin-bottom:9px}.how-card p{color:#d6e0ec;font-size:.98rem}.how-price{margin-top:14px;display:inline-block;color:#9fcbff;font-weight:800;font-size:.9rem}.how-cta{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.btn-light,.btn-outline{display:inline-block;text-decoration:none;padding:14px 26px;font-weight:800;border-radius:10px}.btn-light{background:white;color:#0d5cc0}.btn-outline{border:1px solid #78b7ff;color:white}@media(max-width:900px){.how-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.how-grid{grid-template-columns:1fr}.how-shell h2{font-size:2rem}}
+
+</style>
 </head>
 
 <body>
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Cloud Infrastructure & AI Platform Portfolio</h1>
+      <h1>Cloud, DevOps & AI Infrastructure Consulting</h1>
 
       <p>
-        Demarko Little | Cloud Infrastructure Engineer | DevOps | AI Platforms
+        Practical AWS architecture, automation, reliability, and AI infrastructure guidance backed by hands-on engineering experience.
       </p>
 
-      <a class="btn" href="#enterprise-rag">Explore Enterprise AI</a>
+      <a class="btn" href="#assessment">Take the Free Assessment</a>
     </div>
   </section>
 
@@ -480,6 +1053,234 @@
 
     </div>
   </section>
+
+
+
+  <section class="assessment-section" id="assessment">
+    <div class="assessment-shell">
+      <div class="assessment-intro">
+        <div class="assessment-kicker">FREE CLOUD & AI READINESS ASSESSMENT</div>
+        <h2>How Ready Is Your Business for the Cloud?</h2>
+        <p>Answer a few practical questions and receive an instant readiness score with focused recommendations for cloud infrastructure, automation, monitoring, security, and AI adoption.</p>
+      </div>
+
+      <div class="assessment-body">
+        <div class="assessment-progress">
+          <span id="answeredCount">0 of 8 answered</span>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+
+        <form id="readinessForm">
+          <div class="assessment-grid">
+            <div class="assessment-question">
+              <h3>1. Where does your primary application or workload run today?</h3>
+              <label><input type="radio" name="q1" value="1"> Mostly local servers or unmanaged hosting</label>
+              <label><input type="radio" name="q1" value="2"> A mix of cloud and traditional infrastructure</label>
+              <label><input type="radio" name="q1" value="3"> Primarily AWS or another major cloud</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>2. How is infrastructure currently created and changed?</h3>
+              <label><input type="radio" name="q2" value="1"> Mostly manual setup</label>
+              <label><input type="radio" name="q2" value="2"> Some scripts or reusable templates</label>
+              <label><input type="radio" name="q2" value="3"> Infrastructure as Code such as Terraform</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>3. How are application deployments handled?</h3>
+              <label><input type="radio" name="q3" value="1"> Manual deployment</label>
+              <label><input type="radio" name="q3" value="2"> Partially automated</label>
+              <label><input type="radio" name="q3" value="3"> Automated CI/CD pipeline</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>4. How strong is your monitoring and alerting?</h3>
+              <label><input type="radio" name="q4" value="1"> Limited or reactive monitoring</label>
+              <label><input type="radio" name="q4" value="2"> Basic dashboards and alerts</label>
+              <label><input type="radio" name="q4" value="3"> Centralized monitoring with actionable alerts</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>5. How are backups and recovery handled?</h3>
+              <label><input type="radio" name="q5" value="1"> Inconsistent or mostly manual</label>
+              <label><input type="radio" name="q5" value="2"> Backups exist but recovery is rarely tested</label>
+              <label><input type="radio" name="q5" value="3"> Automated backups with tested recovery</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>6. How mature are your security controls?</h3>
+              <label><input type="radio" name="q6" value="1"> Mostly basic access controls</label>
+              <label><input type="radio" name="q6" value="2"> IAM, logging, and security reviews are in place</label>
+              <label><input type="radio" name="q6" value="3"> Least privilege, centralized logs, encryption, and regular review</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>7. Are containers part of your deployment model?</h3>
+              <label><input type="radio" name="q7" value="1"> Not currently</label>
+              <label><input type="radio" name="q7" value="2"> Testing or using Docker in some areas</label>
+              <label><input type="radio" name="q7" value="3"> Containers are part of a repeatable deployment workflow</label>
+            </div>
+
+            <div class="assessment-question">
+              <h3>8. What is your current AI adoption level?</h3>
+              <label><input type="radio" name="q8" value="1"> Exploring ideas but no implementation</label>
+              <label><input type="radio" name="q8" value="2"> Testing AI APIs or internal prototypes</label>
+              <label><input type="radio" name="q8" value="3"> AI is integrated into business or operational workflows</label>
+            </div>
+          </div>
+
+          <div class="assessment-actions">
+            <button type="submit" class="assessment-button">View My Readiness Score</button>
+          </div>
+        </form>
+
+        <div class="assessment-results" id="assessmentResults">
+          <div class="score-panel">
+            <div class="score-circle" id="scoreCircle">
+              <div class="score-value"><strong id="scoreNumber">0</strong><span>/100</span></div>
+            </div>
+            <div>
+              <h2 id="scoreTitle" style="color:#1f5e9c; margin-bottom:8px;">Your Cloud Readiness Score</h2>
+              <p id="scoreSummary" style="color:#4b5563; font-size:1.08rem;"></p>
+            </div>
+          </div>
+
+          <div class="recommendations" id="recommendations"></div>
+
+          <div class="consultation-cta">
+            <h3>Want DemarkoCloud to help implement these recommendations?</h3>
+            <p>Use your assessment as the starting point for a focused cloud, DevOps, or AI consultation.</p>
+            <a class="btn" href="#services">View Recommended Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="services-section" id="services">
+    <div class="services-shell">
+      <div class="services-kicker">DEMARKOCLOUD SERVICES</div>
+      <h2>Turn Readiness Gaps Into an Action Plan</h2>
+      <p class="services-lead">
+        Practical cloud, DevOps, and AI infrastructure services for small businesses,
+        startups, and technical teams that need a stronger foundation without hiring
+        a full-time platform engineering team.
+      </p>
+
+      <div class="service-grid">
+
+        <article class="service-card" id="service-cloud-foundation">
+          <div class="service-number">01</div>
+          <h3>Cloud Foundation & Architecture Review</h3>
+          <p>
+            <strong>Defined Architecture Review — $995</strong><br>
+            One defined AWS environment + one primary workload/application.
+            Implementation is quoted separately.
+          </p>
+          <p>
+            Review the current environment, identify major architecture gaps, and create
+            a focused roadmap for a more reliable, supportable AWS foundation.
+          </p>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams using AWS or moving toward AWS that need clarity before making more infrastructure changes.
+          </div>
+          <h4>Typical scope</h4>
+          <ul>
+            <li>Current-state cloud review</li>
+            <li>Architecture and operational gap analysis</li>
+            <li>Security, backup, and monitoring observations</li>
+            <li>Prioritized improvement roadmap</li>
+          </ul>
+          <div class="service-deliverable"><strong>Deliverable:</strong> Cloud architecture findings + prioritized action plan</div>
+        </article>
+
+        <article class="service-card" id="service-automation">
+          <div class="service-number">02</div>
+          <h3>Terraform & Delivery Automation</h3>
+          <p>
+            Replace repeatable manual infrastructure and deployment work with version-controlled
+            Terraform and practical CI/CD automation.
+          </p>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams relying on console clicks, manual deployments, or undocumented infrastructure changes.
+          </div>
+          <h4>Typical scope</h4>
+          <ul>
+            <li>Terraform Infrastructure as Code</li>
+            <li>GitHub Actions CI/CD workflows</li>
+            <li>Validation and deployment automation</li>
+            <li>Repeatable environment configuration</li>
+          </ul>
+          <div class="service-deliverable"><strong>Deliverable:</strong> Working automation + implementation documentation</div>
+        </article>
+
+        <article class="service-card" id="service-reliability">
+          <div class="service-number">03</div>
+          <h3>Cloud Reliability & Operations</h3>
+          <p>
+            Improve visibility, resilience, and operational readiness through monitoring,
+            logging, alerts, backup review, and operational documentation.
+          </p>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams that discover problems from users, lack useful alerts, or are uncertain about recovery readiness.
+          </div>
+          <h4>Typical scope</h4>
+          <ul>
+            <li>CloudWatch metrics and dashboards</li>
+            <li>Centralized logging and alerting</li>
+            <li>Backup and recovery review</li>
+            <li>Operational runbook recommendations</li>
+          </ul>
+          <div class="service-deliverable"><strong>Deliverable:</strong> Reliability improvements + operational readiness plan</div>
+        </article>
+
+        <article class="service-card" id="service-ai">
+          <div class="service-number">04</div>
+          <h3>AI Application Infrastructure</h3>
+          <p>
+            Help move an AI idea or prototype toward a deployable application foundation
+            with APIs, containers, cloud infrastructure, and operational safeguards.
+          </p>
+          <div class="service-best-for">
+            <strong>Best for:</strong> Teams experimenting with AI APIs, internal assistants, RAG, or AI-enabled applications.
+          </div>
+          <h4>Typical scope</h4>
+          <ul>
+            <li>AI application deployment architecture</li>
+            <li>Frontend/backend/API integration planning</li>
+            <li>Docker and AWS deployment foundation</li>
+            <li>Monitoring and production-readiness guidance</li>
+          </ul>
+          <div class="service-deliverable"><strong>Deliverable:</strong> AI deployment architecture + implementation roadmap</div>
+        </article>
+
+      </div>
+
+      <div class="services-cta">
+        <h3>Not Sure Which Service Fits?</h3>
+        <p>
+          Start with the free Cloud & AI Readiness Assessment. Your results will highlight
+          the strongest areas to address first.
+        </p>
+        <a class="btn" href="#assessment">Take the Free Assessment</a>
+      </div>
+    </div>
+  </section>
+
+
+<section class="how-it-works" id="how-it-works"><div class="how-shell">
+<div class="how-kicker">A SIMPLE PATH FORWARD</div><h2>How DemarkoCloud Works</h2>
+<p class="how-lead">Start with clarity. DemarkoCloud helps identify the most important cloud, DevOps, reliability, and AI infrastructure gaps before recommending implementation work.</p>
+<div class="how-grid">
+<article class="how-card"><div class="how-step">1</div><h3>Assess</h3><p>Complete the Cloud & AI Readiness Assessment to identify potential gaps across eight readiness areas: cloud infrastructure, infrastructure automation, CI/CD & delivery, reliability & monitoring, backup & recovery, security, container readiness, and AI readiness.</p><span class="how-price">Free</span></article>
+<article class="how-card"><div class="how-step">2</div><h3>Review</h3><p>For organizations that need a deeper technical review, DemarkoCloud examines one defined AWS environment and primary workload and documents the most important findings.</p><span class="how-price">$995 Cloud Foundation & Architecture Review</span></article>
+<article class="how-card"><div class="how-step">3</div><h3>Plan</h3><p>Receive a professional report with readiness scores, prioritized findings, practical recommendations, and a 30/60/90-day action plan.</p><span class="how-price">Clear priorities. Defined next steps.</span></article>
+<article class="how-card"><div class="how-step">4</div><h3>Implement</h3><p>Implement the recommendations internally, use another provider, or request a separately scoped DemarkoCloud project for Terraform, CI/CD, reliability, or AI application infrastructure.</p><span class="how-price">Implementation quoted separately</span></article>
+</div><div class="how-cta"><a class="btn-light" href="#assessment">Start the Free Assessment</a><a class="btn-outline" href="#consultation">Request a Consultation</a></div>
+</div></section>
+
 
   <section class="section" id="projects">
 
@@ -863,7 +1664,105 @@
     </div>
   </section>
 
-  <section class="contact">
+  
+  <section class="consultation-section" id="consultation">
+    <div class="consultation-shell">
+      <div class="consultation-header">
+        <div class="services-kicker">START A CONVERSATION</div>
+        <h2>Request a DemarkoCloud Consultation</h2>
+        <p>
+          Tell me a little about your environment and the problem you are trying to solve.
+          This request does not create a paid engagement. It starts a conversation so we can
+          determine whether DemarkoCloud is a good fit.
+        </p>
+      </div>
+
+      <div class="consultation-layout">
+        <aside class="consultation-info">
+          <h3>What happens next?</h3>
+          <p>A consultation request should be simple and low pressure.</p>
+          <ul>
+            <li>I review the information you provide.</li>
+            <li>We identify the most relevant DemarkoCloud service.</li>
+            <li>If there is a fit, we schedule a short discovery conversation.</li>
+            <li>Any paid work receives a defined scope before implementation begins.</li>
+          </ul>
+          <p style="margin-top:22px;"><strong>Never include passwords, AWS access keys, private keys, secrets, or sensitive production data in this form.</strong></p>
+        </aside>
+
+        <div class="consultation-form-card">
+          <h3>Tell DemarkoCloud About Your Project</h3>
+          <form id="consultation-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="consult-name">Name *</label>
+                <input id="consult-name" required>
+              </div>
+              <div class="form-group">
+                <label for="consult-email">Business Email *</label>
+                <input id="consult-email" type="email" required>
+              </div>
+              <div class="form-group">
+                <label for="consult-company">Company / Organization</label>
+                <input id="consult-company">
+              </div>
+              <div class="form-group">
+                <label for="consult-role">Your Role</label>
+                <input id="consult-role" placeholder="Founder, IT Manager, Developer...">
+              </div>
+              <div class="form-group full">
+                <label for="consult-service">Service You're Interested In *</label>
+                <select id="consult-service" required>
+                  <option value="">Select a service</option>
+                  <option>Cloud Foundation & Architecture Review — $995</option>
+                  <option>Terraform & Delivery Automation</option>
+                  <option>Cloud Reliability & Operations</option>
+                  <option>AI Application Infrastructure</option>
+                  <option>I'm not sure yet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="consult-cloud">Current Environment</label>
+                <select id="consult-cloud">
+                  <option>Not sure / Early planning</option>
+                  <option>AWS</option>
+                  <option>Azure</option>
+                  <option>Google Cloud</option>
+                  <option>On-premises / Local servers</option>
+                  <option>Hybrid / Multiple environments</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="consult-timeline">Desired Timeline</label>
+                <select id="consult-timeline">
+                  <option>Exploring options</option>
+                  <option>Within 30 days</option>
+                  <option>1–3 months</option>
+                  <option>3+ months</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="consult-problem">What problem are you trying to solve? *</label>
+                <textarea id="consult-problem" required placeholder="Example: Our AWS infrastructure is mostly manual, deployments are inconsistent, and we need a clearer path to Terraform and CI/CD."></textarea>
+              </div>
+            </div>
+            <button class="btn consultation-submit" type="submit">Prepare Consultation Request</button>
+            <p class="consultation-privacy">
+              This form does not store your information in a database. When submitted,
+              it prepares an email in your default mail application so you can review it before sending.
+            </p>
+            <p class="consultation-privacy">
+              Having trouble opening the request? Email DemarkoCloud directly at
+              <a href="mailto:dmrk_little@yahoo.com">dmrk_little@yahoo.com</a>.
+            </p>
+            <div class="consultation-status" id="consultation-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
 
     <h2>Get in Touch</h2>
 
@@ -884,6 +1783,198 @@
   <footer>
     <p>© 2026 Demarko Cloud Solutions. All rights reserved.</p>
   </footer>
+
+
+
+  
+<script>
+  const form = document.getElementById('readinessForm');
+  const answeredCount = document.getElementById('answeredCount');
+  const progressBar = document.getElementById('progressBar');
+  const results = document.getElementById('assessmentResults');
+  const scoreNumber = document.getElementById('scoreNumber');
+  const scoreTitle = document.getElementById('scoreTitle');
+  const scoreSummary = document.getElementById('scoreSummary');
+  const recommendations = document.getElementById('recommendations');
+
+  const totalQuestions = 8;
+  const questionMeta = {
+    q1: { category: 'Cloud Infrastructure', service: 'Cloud Foundation & Architecture Review', recommendation: 'Document the target architecture and establish a repeatable, supportable cloud foundation.' },
+    q2: { category: 'Infrastructure Automation', service: 'Terraform & Delivery Automation', recommendation: 'Move repeatable infrastructure work into version-controlled Infrastructure as Code using Terraform.' },
+    q3: { category: 'CI/CD & Delivery', service: 'Terraform & Delivery Automation', recommendation: 'Automate build, validation, deployment, and rollback steps through a controlled CI/CD workflow.' },
+    q4: { category: 'Reliability & Monitoring', service: 'Cloud Reliability & Operations', recommendation: 'Centralize metrics, logs, dashboards, and alerts so issues are detected before users report them.' },
+    q5: { category: 'Backup & Recovery', service: 'Cloud Reliability & Operations', recommendation: 'Standardize backups, document recovery procedures, and regularly validate restoration.' },
+    q6: { category: 'Security', service: 'Cloud Foundation & Architecture Review', recommendation: 'Strengthen least-privilege access, encryption, logging, and recurring security review.' },
+    q7: { category: 'Container Readiness', service: 'AI Application Infrastructure', recommendation: 'Use repeatable container builds and deployment practices where they simplify application delivery.' },
+    q8: { category: 'AI Readiness', service: 'AI Application Infrastructure', recommendation: 'Choose one measurable AI use case, identify approved data/API sources, and define a secure deployment path.' }
+  };
+
+  function getSelections() {
+    const selections = {};
+    for (let i = 1; i <= totalQuestions; i++) {
+      const selected = form.querySelector(`input[name="q${i}"]:checked`);
+      if (selected) selections[`q${i}`] = Number(selected.value);
+    }
+    return selections;
+  }
+
+  function updateProgress() {
+    const answered = Object.keys(getSelections()).length;
+    answeredCount.textContent = `${answered} of ${totalQuestions} answered`;
+    progressBar.style.width = `${Math.round((answered / totalQuestions) * 100)}%`;
+  }
+
+  function scoreToPercent(value) {
+    return Math.round(((value - 1) / 2) * 100);
+  }
+
+  function maturity(score) {
+    if (score < 35) return 'Foundational';
+    if (score < 70) return 'Developing';
+    return 'Established';
+  }
+
+  function overallMessage(score) {
+    if (score < 35) {
+      return {
+        title: 'Foundation Opportunity',
+        summary: 'Your answers show several areas where cloud standardization, automation, reliability, and security improvements could reduce operational risk.'
+      };
+    }
+    if (score < 70) {
+      return {
+        title: 'Developing Cloud Foundation',
+        summary: 'You already have useful building blocks in place. Targeted improvements can make the environment more repeatable, observable, secure, and ready for growth.'
+      };
+    }
+    if (score < 90) {
+      return {
+        title: 'Established — Ready to Optimize',
+        summary: 'Your environment shows solid maturity. The next opportunity is closing remaining gaps and improving governance, resilience, automation, and AI readiness.'
+      };
+    }
+    return {
+      title: 'Advanced Cloud Readiness',
+      summary: 'Your responses indicate a strong technical foundation. Future work should focus on optimization, governance, resilience, cost efficiency, and high-value AI opportunities.'
+    };
+  }
+
+  form.addEventListener('change', updateProgress);
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const selections = getSelections();
+    if (Object.keys(selections).length !== totalQuestions) {
+      answeredCount.textContent = `Please answer all ${totalQuestions} questions`;
+      answeredCount.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const values = Object.values(selections);
+    const total = values.reduce((sum, value) => sum + value, 0);
+    const overall = Math.round(((total - totalQuestions) / (totalQuestions * 2)) * 100);
+    const message = overallMessage(overall);
+
+    scoreNumber.textContent = overall;
+    scoreTitle.textContent = message.title;
+    scoreSummary.textContent = message.summary;
+
+    const categoryResults = Object.entries(selections).map(([key, value]) => {
+      const meta = questionMeta[key];
+      return { ...meta, score: scoreToPercent(value) };
+    }).sort((a, b) => a.score - b.score);
+
+    const cards = categoryResults.map(item => `
+      <div class="result-category-card">
+        <h4>${item.category}</h4>
+        <div class="category-score">${item.score}/100</div>
+        <strong>${maturity(item.score)}</strong>
+        <div class="category-bar"><span style="width:${item.score}%"></span></div>
+        <p>${item.score >= 100 ? 'Your response indicates a strong foundation in this area. Focus on optimization, governance, and ongoing validation.' : item.recommendation}</p>
+        <div class="recommended-service">Recommended service: ${item.service}</div>
+      </div>
+    `).join('');
+
+    const priorities = categoryResults.filter(item => item.score < 100).slice(0, 3);
+    const priorityHtml = priorities.length ? `
+      <h3 style="margin:30px 0 14px; color:#204f7a;">Top Priorities</h3>
+      <div style="display:grid; gap:12px; text-align:left;">
+        ${priorities.map((item, index) => `
+          <div style="background:#f7f9fc; border:1px solid #dbe5ef; border-radius:12px; padding:16px;">
+            <strong>${index + 1}. ${item.category}</strong><br>
+            ${item.recommendation}
+          </div>
+        `).join('')}
+      </div>
+    ` : `
+      <h3 style="margin:30px 0 10px; color:#204f7a;">Optimization Focus</h3>
+      <p>Your responses indicate a strong foundation across all eight areas. A consultation would focus on optimization, governance, resilience, cost, and AI opportunities.</p>
+    `;
+
+    recommendations.innerHTML = `
+      <h3 style="margin-bottom:14px; color:#204f7a;">Your Readiness Breakdown</h3>
+      <div class="result-category-grid">${cards}</div>
+      ${priorityHtml}
+      <p class="assessment-note">This self-assessment provides preliminary guidance and is not a security audit, compliance certification, or substitute for a detailed technical review.</p>
+    `;
+
+    results.style.display = 'block';
+    progressBar.style.width = '100%';
+    answeredCount.textContent = `${totalQuestions} of ${totalQuestions} answered`;
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  updateProgress();
+</script>
+
+
+<script>
+  (function () {
+    const form = document.getElementById('consultation-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('consult-name').value.trim();
+      const email = document.getElementById('consult-email').value.trim();
+      const company = document.getElementById('consult-company').value.trim() || 'Not provided';
+      const role = document.getElementById('consult-role').value.trim() || 'Not provided';
+      const service = document.getElementById('consult-service').value;
+      const cloud = document.getElementById('consult-cloud').value;
+      const timeline = document.getElementById('consult-timeline').value;
+      const problem = document.getElementById('consult-problem').value.trim();
+
+      const subject = 'DemarkoCloud Consultation Request - ' + service;
+      const body = [
+        'DemarkoCloud Consultation Request',
+        '',
+        'Name: ' + name,
+        'Business Email: ' + email,
+        'Company / Organization: ' + company,
+        'Role: ' + role,
+        'Service: ' + service,
+        'Current Environment: ' + cloud,
+        'Desired Timeline: ' + timeline,
+        '',
+        'Problem / Goal:',
+        problem,
+        '',
+        'Please do not include passwords, access keys, private keys, or secrets.'
+      ].join('\\n');
+
+      const mailto = 'mailto:dmrk_little@yahoo.com?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+      const status = document.getElementById('consultation-status');
+      status.style.display = 'block';
+      status.textContent = 'Your consultation request is prepared. Your default email application should open so you can review and send it.';
+
+      window.location.href = mailto;
+    });
+  })();
+</script>
 
 </body>
 </html>
