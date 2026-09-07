@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>7 Signs Your AWS Environment Needs an Architecture Review | DemarkoCloud</title>
+
+  <meta
+    name="description"
+    content="Learn seven warning signs that your AWS environment may need an architecture review, including unclear ownership, weak monitoring, manual infrastructure, recovery risk, and rising cloud costs."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8fbfe;
+      color: #253443;
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #071c36;
+      box-shadow: 0 4px 18px rgba(7, 28, 54, 0.18);
+    }
+
+    .site-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .site-brand {
+      color: white;
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav-links a {
+      color: #dce7f3;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .site-nav-links a:hover {
+      color: #78b7ff;
+    }
+
+    .site-nav-cta {
+      background: #0d5cc0;
+      color: white !important;
+      padding: 10px 16px;
+      border-radius: 9px;
+    }
+
+    /* Article Hero */
+    .article-hero {
+      background: linear-gradient(135deg, #071c36, #123f70);
+      color: white;
+      padding: 78px 20px 70px;
+    }
+
+    .article-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: rgba(120, 183, 255, 0.16);
+      color: #a8d3ff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: 3rem;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .article-subtitle {
+      max-width: 780px;
+      color: #d9e8f6;
+      font-size: 1.2rem;
+    }
+
+    /* Article */
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 62px 20px 80px;
+    }
+
+    .article-intro {
+      font-size: 1.14rem;
+      margin-bottom: 38px;
+      color: #3d4b58;
+    }
+
+    .article-container h2 {
+      color: #174f85;
+      font-size: 1.75rem;
+      margin-top: 42px;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .article-container p {
+      margin-bottom: 18px;
+    }
+
+    .article-container ul {
+      margin: 14px 0 22px 24px;
+    }
+
+    .article-container li {
+      margin-bottom: 9px;
+    }
+
+    .callout {
+      background: white;
+      border-left: 5px solid #0d5cc0;
+      padding: 24px;
+      margin: 36px 0;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(7, 28, 54, 0.07);
+    }
+
+    .callout strong {
+      color: #174f85;
+    }
+
+    /* CTA */
+    .article-cta {
+      margin-top: 56px;
+      background: #071c36;
+      color: white;
+      padding: 34px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .article-cta h2 {
+      color: white;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .article-cta p {
+      color: #d7e4f2;
+      margin-bottom: 24px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #0d5cc0;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 13px 20px;
+      border-radius: 9px;
+    }
+
+    .cta-button:hover {
+      background: #0a4da2;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 34px;
+      color: #0d5cc0;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #071c36;
+      color: #cbd7e4;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .site-nav-links {
+        gap: 14px 18px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .article-hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .article-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .site-nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="site-brand" href="../index.html">DemarkoCloud</a>
+
+      <div class="site-nav-links">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#assessment">Assessment</a>
+        <a href="../index.html#sample-assessment">Sample Report</a>
+        <a href="../index.html#projects">Case Studies</a>
+        <a href="../index.html#insights">Insights</a>
+        <a class="site-nav-cta" href="../index.html#consultation">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="article-hero">
+    <div class="article-hero-inner">
+
+      <div class="article-category">AWS ARCHITECTURE</div>
+
+      <h1>7 Signs Your AWS Environment Needs an Architecture Review</h1>
+
+      <p class="article-subtitle">
+        AWS environments often grow gradually. What started as a few resources can
+        eventually become difficult to understand, expensive to operate, and risky
+        to change. These seven signs can help you recognize when it may be time to
+        review the environment before making more changes.
+      </p>
+
+    </div>
+  </section>
+
+  <main class="article-container">
+
+    <p class="article-intro">
+      Small businesses do not always have a dedicated cloud engineering team watching
+      their AWS environment every day. Infrastructure may have been created by different
+      employees, contractors, developers, or vendors over time. As the environment grows,
+      documentation can fall behind and operational decisions become harder.
+    </p>
+
+    <p>
+      An architecture review is not about changing everything. The first goal should be
+      understanding what is currently running, why it exists, what depends on it, and
+      where the greatest risks may be.
+    </p>
+
+    <h2>1. Nobody Is Completely Sure What Every AWS Resource Does</h2>
+
+    <p>
+      One of the clearest warning signs is uncertainty. You may have EC2 instances,
+      security groups, IAM roles, load balancers, storage, databases, or networking
+      resources that nobody can confidently explain.
+    </p>
+
+    <p>
+      This often happens when an environment has been operating for several years and
+      different people have made changes along the way.
+    </p>
+
+    <p>
+      Before deleting or resizing anything, the safer approach is to identify:
+    </p>
+
+    <ul>
+      <li>What the resource supports</li>
+      <li>Who or what depends on it</li>
+      <li>Whether it is still actively used</li>
+      <li>What could happen if it is changed</li>
+    </ul>
+
+    <h2>2. IAM Permissions Have Accumulated Over Time</h2>
+
+    <p>
+      AWS access often expands faster than it contracts. Employees change roles,
+      contractors complete projects, applications evolve, and temporary permissions
+      sometimes remain long after they are needed.
+    </p>
+
+    <p>
+      If administrators are unsure who has privileged access or why certain IAM users,
+      roles, or policies exist, the environment deserves closer review.
+    </p>
+
+    <p>
+      The goal is not simply to remove permissions quickly. Access should be reviewed
+      carefully so legitimate applications, automation, and business processes are not
+      disrupted.
+    </p>
+
+    <h2>3. Backup Exists, but Restore Testing Is Unclear</h2>
+
+    <p>
+      Having backups is important, but backups alone do not guarantee recovery.
+      Organizations should understand whether important systems can actually be restored
+      within an acceptable period of time.
+    </p>
+
+    <p>
+      Warning signs include:
+    </p>
+
+    <ul>
+      <li>No recent restore testing</li>
+      <li>Unclear backup ownership</li>
+      <li>Unknown retention requirements</li>
+      <li>Critical workloads without documented recovery procedures</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Important:</strong> A successful backup job is not the same thing as a
+      proven recovery process.
+    </div>
+
+    <h2>4. CloudWatch Monitoring Is Minimal or Mostly Reactive</h2>
+
+    <p>
+      If the first indication of a problem comes from a customer, employee, or application
+      user, monitoring may not be providing enough operational visibility.
+    </p>
+
+    <p>
+      Useful monitoring should help the team understand the health of important systems
+      before a minor issue turns into a larger outage.
+    </p>
+
+    <p>
+      Depending on the environment, this may include reviewing:
+    </p>
+
+    <ul>
+      <li>CloudWatch metrics</li>
+      <li>Alarms</li>
+      <li>Log collection</li>
+      <li>Notification paths</li>
+      <li>Application health indicators</li>
+    </ul>
+
+    <h2>5. Most Infrastructure Changes Are Performed Manually</h2>
+
+    <p>
+      Manual configuration through the AWS Console can work well when an environment is
+      small. Over time, however, repeated manual changes can introduce inconsistency and
+      make it difficult to understand exactly how infrastructure was configured.
+    </p>
+
+    <p>
+      If the team regularly creates or modifies infrastructure manually, it may be worth
+      evaluating whether Infrastructure as Code tools such as Terraform could provide
+      better repeatability and documentation.
+    </p>
+
+    <p>
+      This does not mean every AWS environment automatically needs Terraform. The decision
+      should depend on the size, complexity, rate of change, and operational needs of the
+      environment.
+    </p>
+
+    <h2>6. AWS Costs Are Increasing and Nobody Knows Exactly Why</h2>
+
+    <p>
+      Rising cloud costs are often treated as a billing problem, but they can also reveal
+      architecture and operational issues.
+    </p>
+
+    <p>
+      Common examples include:
+    </p>
+
+    <ul>
+      <li>Oversized compute resources</li>
+      <li>Unused storage</li>
+      <li>Old snapshots</li>
+      <li>Resources that are no longer required</li>
+      <li>Unexpected network or data-transfer costs</li>
+    </ul>
+
+    <p>
+      The safest cost optimization process begins with investigation. Resizing or removing
+      infrastructure purely because it appears expensive can create unnecessary business
+      risk if dependencies are not understood first.
+    </p>
+
+    <h2>7. Important Infrastructure Knowledge Exists Only in Someone's Head</h2>
+
+    <p>
+      A cloud environment becomes harder to operate when the organization depends heavily
+      on one person remembering how everything works.
+    </p>
+
+    <p>
+      Basic operational documentation can make a significant difference. Teams should be
+      able to identify critical workloads, networking relationships, access requirements,
+      monitoring responsibilities, backup processes, and major dependencies.
+    </p>
+
+    <p>
+      Documentation does not need to become a massive project. The goal is to capture
+      enough information for someone else to understand the environment and make safer
+      decisions.
+    </p>
+
+    <h2>What an AWS Architecture Review Should Accomplish</h2>
+
+    <p>
+      An architecture review should provide clarity before implementation begins.
+      The purpose is to understand the current environment, identify meaningful risks,
+      and determine which improvements deserve priority.
+    </p>
+
+    <p>
+      A practical review may examine areas such as:
+    </p>
+
+    <ul>
+      <li>AWS architecture and resource organization</li>
+      <li>Identity and access management</li>
+      <li>Monitoring and observability</li>
+      <li>Backup and recovery readiness</li>
+      <li>Infrastructure automation</li>
+      <li>Reliability and operational risk</li>
+      <li>Cost optimization opportunities</li>
+      <li>Documentation and ownership</li>
+    </ul>
+
+    <div class="callout">
+      <strong>DemarkoCloud approach:</strong> Investigate first. Change second.
+      Understanding dependencies and operational risk should come before production
+      implementation.
+    </div>
+
+    <h2>The Goal Is Better Decisions, Not More Technology</h2>
+
+    <p>
+      Small businesses do not need unnecessary cloud complexity. They need an environment
+      they can understand, operate, protect, and improve with confidence.
+    </p>
+
+    <p>
+      If several of these warning signs sound familiar, an architecture review can help
+      establish a clearer picture of the current environment and create a practical path
+      forward.
+    </p>
+
+    <section class="article-cta">
+      <h2>Not Sure Where Your AWS Environment Stands?</h2>
+
+      <p>
+        Start with the free DemarkoCloud Cloud &amp; AI Readiness Assessment to identify
+        potential gaps across infrastructure, automation, reliability, security, recovery,
+        containers, and AI readiness.
+      </p>
+
+      <a class="cta-button" href="../index.html#assessment">
+        Take the Free Assessment
+      </a>
+    </section>
+
+    <a class="back-link" href="../index.html#insights">
+      ← Back to DemarkoCloud Insights
+    </a>
+
+  </main>
+
+  <footer>
+    © 2026 DemarkoCloud. Practical Cloud, DevOps &amp; AI Infrastructure Consulting.
+  </footer>
+
+</body>
+</html>
