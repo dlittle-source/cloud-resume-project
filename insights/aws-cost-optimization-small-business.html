@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AWS Cost Optimization for Small Businesses | DemarkoCloud</title>
+
+  <meta
+    name="description"
+    content="Learn how small businesses can approach AWS cost optimization safely by identifying waste, reviewing resource usage, understanding dependencies, and prioritizing changes based on business impact."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8fbfe;
+      color: #253443;
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #071c36;
+      box-shadow: 0 4px 18px rgba(7, 28, 54, 0.18);
+    }
+
+    .site-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .site-brand {
+      color: white;
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav-links a {
+      color: #dce7f3;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .site-nav-links a:hover {
+      color: #78b7ff;
+    }
+
+    .site-nav-cta {
+      background: #0d5cc0;
+      color: white !important;
+      padding: 10px 16px;
+      border-radius: 9px;
+    }
+
+    /* Article Hero */
+    .article-hero {
+      background: linear-gradient(135deg, #071c36, #123f70);
+      color: white;
+      padding: 78px 20px 70px;
+    }
+
+    .article-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: rgba(120, 183, 255, 0.16);
+      color: #a8d3ff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: 3rem;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .article-subtitle {
+      max-width: 780px;
+      color: #d9e8f6;
+      font-size: 1.2rem;
+    }
+
+    /* Article */
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 62px 20px 80px;
+    }
+
+    .article-intro {
+      font-size: 1.14rem;
+      margin-bottom: 38px;
+      color: #3d4b58;
+    }
+
+    .article-container h2 {
+      color: #174f85;
+      font-size: 1.75rem;
+      margin-top: 42px;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .article-container p {
+      margin-bottom: 18px;
+    }
+
+    .article-container ul {
+      margin: 14px 0 22px 24px;
+    }
+
+    .article-container li {
+      margin-bottom: 9px;
+    }
+
+    .callout {
+      background: white;
+      border-left: 5px solid #0d5cc0;
+      padding: 24px;
+      margin: 36px 0;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(7, 28, 54, 0.07);
+    }
+
+    .callout strong {
+      color: #174f85;
+    }
+
+    /* CTA */
+    .article-cta {
+      margin-top: 56px;
+      background: #071c36;
+      color: white;
+      padding: 34px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .article-cta h2 {
+      color: white;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .article-cta p {
+      color: #d7e4f2;
+      margin-bottom: 24px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #0d5cc0;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 13px 20px;
+      border-radius: 9px;
+    }
+
+    .cta-button:hover {
+      background: #0a4da2;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 34px;
+      color: #0d5cc0;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #071c36;
+      color: #cbd7e4;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .site-nav-links {
+        gap: 14px 18px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .article-hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .article-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .site-nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="site-brand" href="../index.html">DemarkoCloud</a>
+
+      <div class="site-nav-links">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#assessment">Assessment</a>
+        <a href="../index.html#sample-assessment">Sample Report</a>
+        <a href="../index.html#projects">Case Studies</a>
+        <a href="../index.html#insights">Insights</a>
+        <a class="site-nav-cta" href="../index.html#consultation">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="article-hero">
+    <div class="article-hero-inner">
+
+      <div class="article-category">AWS COST</div>
+
+      <h1>AWS Cost Optimization for Small Businesses</h1>
+
+      <p class="article-subtitle">
+        Reducing an AWS bill is not simply about finding the largest EC2 instance
+        and making it smaller. Effective cost optimization starts by understanding
+        what is running, why it exists, how it is being used, and what could happen
+        if it changes.
+      </p>
+
+    </div>
+  </section>
+
+  <main class="article-container">
+
+    <p class="article-intro">
+      AWS makes it relatively easy to create infrastructure. That flexibility is one
+      of the platform's strengths, but it can also make cloud spending difficult to
+      control as an environment grows.
+    </p>
+
+    <p>
+      A server may have been created for a temporary project and never removed.
+      Storage may continue accumulating. Development resources may run around the
+      clock. An instance selected several years ago may no longer match the workload
+      it supports.
+    </p>
+
+    <p>
+      For a small business without a dedicated cloud operations team, these costs can
+      accumulate quietly until the monthly AWS bill becomes a concern.
+    </p>
+
+    <h2>Start With Visibility, Not Changes</h2>
+
+    <p>
+      When an AWS bill looks too high, the natural reaction is to start shutting down,
+      deleting, or resizing resources.
+    </p>
+
+    <p>
+      That can be risky.
+    </p>
+
+    <p>
+      A resource that appears unused may support an application, scheduled process,
+      backup workflow, integration, or business function that is not immediately
+      obvious.
+    </p>
+
+    <p>
+      Before making production changes, determine:
+    </p>
+
+    <ul>
+      <li>Which services are generating the largest costs</li>
+      <li>Which resources are associated with those services</li>
+      <li>Who owns or depends on those resources</li>
+      <li>How heavily the resources are actually being used</li>
+      <li>Whether the workload has availability or performance requirements</li>
+      <li>What business impact could result from changing it</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Cost optimization principle:</strong> A resource being expensive does not
+      automatically mean it is unnecessary. Understand its purpose and dependencies
+      before changing production infrastructure.
+    </div>
+
+    <h2>1. Look for Resources That Are No Longer Needed</h2>
+
+    <p>
+      AWS environments frequently contain resources that were created for legitimate
+      reasons but are no longer required.
+    </p>
+
+    <p>
+      Examples may include:
+    </p>
+
+    <ul>
+      <li>Old development or testing instances</li>
+      <li>Unused storage volumes</li>
+      <li>Outdated snapshots</li>
+      <li>Temporary resources from completed projects</li>
+      <li>Idle load balancers or other infrastructure</li>
+    </ul>
+
+    <p>
+      These resources should be investigated rather than automatically deleted.
+      Ownership and dependencies should be established first.
+    </p>
+
+    <h2>2. Review EC2 Utilization Before Rightsizing</h2>
+
+    <p>
+      EC2 is often one of the first places organizations look when trying to reduce
+      AWS costs.
+    </p>
+
+    <p>
+      Rightsizing can produce meaningful savings when an instance has substantially
+      more CPU, memory, or capacity than the workload requires. But the decision
+      should be based on actual usage and workload requirements.
+    </p>
+
+    <p>
+      Before resizing an instance, review factors such as:
+    </p>
+
+    <ul>
+      <li>CPU utilization over a meaningful period</li>
+      <li>Memory utilization when metrics are available</li>
+      <li>Network activity</li>
+      <li>Disk performance requirements</li>
+      <li>Peak business periods</li>
+      <li>Application dependencies</li>
+      <li>Availability requirements</li>
+    </ul>
+
+    <p>
+      A server that averages low CPU utilization may still experience important
+      workload spikes. Looking only at an average can lead to the wrong conclusion.
+    </p>
+
+    <h2>3. Ask Whether Nonproduction Systems Need to Run 24/7</h2>
+
+    <p>
+      Development, testing, demonstration, and training environments do not always
+      need to operate continuously.
+    </p>
+
+    <p>
+      If a system is only used during business hours, there may be opportunities to
+      establish controlled startup and shutdown schedules.
+    </p>
+
+    <p>
+      This can be especially useful for small teams that maintain separate
+      nonproduction environments but only use them periodically.
+    </p>
+
+    <p>
+      Scheduling should still be coordinated with the people using those systems so
+      automated shutdowns do not interrupt legitimate work.
+    </p>
+
+    <h2>4. Review Storage Growth</h2>
+
+    <p>
+      Compute resources are highly visible, but storage can also contribute to
+      unnecessary AWS spending.
+    </p>
+
+    <p>
+      Over time, organizations may accumulate:
+    </p>
+
+    <ul>
+      <li>Unattached EBS volumes</li>
+      <li>Old snapshots</li>
+      <li>Large amounts of S3 data</li>
+      <li>Logs retained longer than necessary</li>
+      <li>Backups that no longer match business retention requirements</li>
+    </ul>
+
+    <p>
+      Storage optimization should balance cost with operational, recovery, security,
+      and compliance requirements. Deleting historical data solely to reduce cost can
+      create larger problems if retention requirements have not been considered.
+    </p>
+
+    <h2>5. Understand Data Transfer and Network Costs</h2>
+
+    <p>
+      AWS networking costs can be less obvious than the hourly price of an EC2
+      instance.
+    </p>
+
+    <p>
+      Architecture decisions involving Availability Zones, internet traffic, NAT
+      gateways, application communication, and data movement can influence the
+      monthly bill.
+    </p>
+
+    <p>
+      If network-related costs are increasing, the question should not simply be,
+      "How do we eliminate this charge?"
+    </p>
+
+    <p>
+      The better question is, "Why is the traffic occurring, and does the current
+      architecture still make sense?"
+    </p>
+
+    <h2>6. Improve Tagging and Resource Ownership</h2>
+
+    <p>
+      Cost management becomes much harder when nobody knows which application,
+      department, environment, or project owns a resource.
+    </p>
+
+    <p>
+      A practical tagging strategy can help identify resources by attributes such as:
+    </p>
+
+    <ul>
+      <li>Application</li>
+      <li>Environment</li>
+      <li>Owner</li>
+      <li>Department</li>
+      <li>Project</li>
+      <li>Cost center</li>
+    </ul>
+
+    <p>
+      Tagging does not reduce the AWS bill by itself. It improves visibility so the
+      organization can make better decisions about where money is being spent.
+    </p>
+
+    <h2>7. Use AWS Cost Management Information to Find Patterns</h2>
+
+    <p>
+      Cost optimization should not depend on guessing. AWS provides billing and cost
+      information that can help teams understand how spending changes over time.
+    </p>
+
+    <p>
+      Reviewing cost trends can help answer questions such as:
+    </p>
+
+    <ul>
+      <li>Which AWS services are driving monthly growth?</li>
+      <li>When did a particular cost increase begin?</li>
+      <li>Was the increase associated with a deployment or architecture change?</li>
+      <li>Are costs predictable or unexpectedly fluctuating?</li>
+    </ul>
+
+    <p>
+      The goal is to connect financial information with technical activity in the
+      environment.
+    </p>
+
+    <h2>8. Optimize the Architecture, Not Just Individual Resources</h2>
+
+    <p>
+      Sometimes the problem is larger than one oversized server.
+    </p>
+
+    <p>
+      An architecture may have evolved through years of incremental changes. A small
+      business may be paying for infrastructure that made sense previously but no
+      longer reflects how the application operates today.
+    </p>
+
+    <p>
+      In these situations, reducing cost may involve reviewing the architecture as a
+      whole rather than making isolated changes.
+    </p>
+
+    <div class="callout">
+      <strong>Important:</strong> The lowest-cost architecture is not automatically the
+      best architecture. Reliability, security, recovery, performance, and operational
+      simplicity still matter.
+    </div>
+
+    <h2>Cost Optimization Should Become an Operational Practice</h2>
+
+    <p>
+      AWS cost optimization works best when it is not treated as a one-time emergency
+      project.
+    </p>
+
+    <p>
+      Small businesses can establish a simple recurring process to review:
+    </p>
+
+    <ul>
+      <li>Monthly cost trends</li>
+      <li>Unexpected increases</li>
+      <li>Resource utilization</li>
+      <li>Unused infrastructure</li>
+      <li>Storage growth</li>
+      <li>Ownership and tagging</li>
+      <li>Upcoming architecture changes</li>
+    </ul>
+
+    <p>
+      Regular reviews make it easier to identify small problems before they become
+      expensive ones.
+    </p>
+
+    <h2>The Goal Is Sustainable Cloud Spending</h2>
+
+    <p>
+      Cost optimization should not mean making an AWS environment cheaper at any cost.
+      The objective is to eliminate unnecessary spending while preserving the
+      reliability, security, performance, and operational capabilities the business
+      actually needs.
+    </p>
+
+    <p>
+      For small businesses, that starts with understanding the environment before
+      changing it.
+    </p>
+
+    <p>
+      Investigate first. Identify the opportunities. Understand the dependencies.
+      Then make deliberate changes with a clear reason for each one.
+    </p>
+
+    <section class="article-cta">
+      <h2>Want a Clearer Picture of Your AWS Environment?</h2>
+
+      <p>
+        Start with the free DemarkoCloud Cloud &amp; AI Readiness Assessment to identify
+        potential gaps across cloud infrastructure, automation, reliability, security,
+        recovery, containers, and AI readiness.
+      </p>
+
+      <a class="cta-button" href="../index.html#assessment">
+        Take the Free Assessment
+      </a>
+    </section>
+
+    <a class="back-link" href="../index.html#insights">
+      ← Back to DemarkoCloud Insights
+    </a>
+
+  </main>
+
+  <footer>
+    © 2026 DemarkoCloud. Practical Cloud, DevOps &amp; AI Infrastructure Consulting.
+  </footer>
+
+</body>
+</html>
