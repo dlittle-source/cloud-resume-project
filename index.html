@@ -45,7 +45,7 @@
     property="og:image"
     content="https://www.demarkocloud.com/screenshots/ai-infrawatch-hero.png"
   />
-  <meta property="og:url" content="https://www.demarkocloud.com/" />
+  <meta property="og:url" content="https://demarkocloud.com/" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter / Social Preview -->
@@ -1297,7 +1297,7 @@
 
     .insights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
       text-align: left;
     }
@@ -1357,6 +1357,10 @@
     }
 
     @media (max-width: 768px) {
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+
       .insights-shell h2 {
         font-size: 2rem;
       }
@@ -1811,6 +1815,22 @@
             to reduce the monthly bill.
           </p>
           <a class="insight-link" href="insights/aws-cost-optimization-small-business.html">
+            Read Article →
+          </a>
+        </article>
+
+        <article class="insight-card">
+          <div class="insight-category">AWS COST</div>
+
+          <h3>Why Is My AWS Bill So High? 7 Places Small Businesses Should Check First</h3>
+
+          <p>
+            Rising AWS costs are not always caused by one expensive resource. Learn seven
+            areas small businesses should investigate before resizing, deleting, or changing
+            production infrastructure.
+          </p>
+
+          <a class="insight-link" href="insights/why-is-my-aws-bill-so-high.html">
             Read Article →
           </a>
         </article>
@@ -2340,7 +2360,7 @@
   </section>
 
   <footer>
-    <p>© 2026 Demarko Cloud Solutions. All rights reserved.</p>
+    <p>© 2026 DemarkoCloud. Practical Cloud, DevOps &amp; AI Infrastructure Consulting.</p>
   </footer>
 
 
