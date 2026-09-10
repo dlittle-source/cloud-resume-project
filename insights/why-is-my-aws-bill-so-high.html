@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DQCRW9VPX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7DQCRW9VPX');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Why Is My AWS Bill So High? 7 Places to Check | DemarkoCloud</title>
+
+  <link
+    rel="canonical"
+    href="https://demarkocloud.com/insights/why-is-my-aws-bill-so-high.html"
+  />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Is My AWS Bill So High? 7 Places Small Businesses Should Check First",
+    "url": "https://demarkocloud.com/insights/why-is-my-aws-bill-so-high.html",
+    "author": {
+      "@type": "Person",
+      "name": "Demarko Little"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DemarkoCloud",
+      "url": "https://demarkocloud.com/"
+    }
+  }
+  </script>
+
+  <meta
+    name="description"
+    content="Wondering why your AWS bill keeps increasing? Learn seven areas small businesses should investigate before resizing, deleting, or changing production AWS resources."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f8fbfe;
+      color: #253443;
+      line-height: 1.7;
+    }
+
+    /* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #071c36;
+      box-shadow: 0 4px 18px rgba(7, 28, 54, 0.18);
+    }
+
+    .site-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .site-brand {
+      color: white;
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav-links a {
+      color: #dce7f3;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .site-nav-links a:hover {
+      color: #78b7ff;
+    }
+
+    .site-nav-cta {
+      background: #0d5cc0;
+      color: white !important;
+      padding: 10px 16px;
+      border-radius: 9px;
+    }
+
+    /* Article Hero */
+    .article-hero {
+      background: linear-gradient(135deg, #071c36, #123f70);
+      color: white;
+      padding: 78px 20px 70px;
+    }
+
+    .article-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: rgba(120, 183, 255, 0.16);
+      color: #a8d3ff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-size: 3rem;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .article-subtitle {
+      max-width: 780px;
+      color: #d9e8f6;
+      font-size: 1.2rem;
+    }
+
+    /* Article */
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 62px 20px 80px;
+    }
+
+    .article-intro {
+      font-size: 1.14rem;
+      margin-bottom: 38px;
+      color: #3d4b58;
+    }
+
+    .article-container h2 {
+      color: #174f85;
+      font-size: 1.75rem;
+      margin-top: 42px;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .article-container p {
+      margin-bottom: 18px;
+    }
+
+    .article-container ul {
+      margin: 14px 0 22px 24px;
+    }
+
+    .article-container li {
+      margin-bottom: 9px;
+    }
+
+    .callout {
+      background: white;
+      border-left: 5px solid #0d5cc0;
+      padding: 24px;
+      margin: 36px 0;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(7, 28, 54, 0.07);
+    }
+
+    .callout strong {
+      color: #174f85;
+    }
+
+    /* CTA */
+    .article-cta {
+      margin-top: 56px;
+      background: #071c36;
+      color: white;
+      padding: 34px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .article-cta h2 {
+      color: white;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .article-cta p {
+      color: #d7e4f2;
+      margin-bottom: 24px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #0d5cc0;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      padding: 13px 20px;
+      border-radius: 9px;
+    }
+
+    .cta-button:hover {
+      background: #0a4da2;
+    }
+
+    .related-insights {
+      margin-top: 42px;
+      padding: 28px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(7, 28, 54, 0.07);
+    }
+
+    .related-insights h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #174f85;
+    }
+
+    .related-insights ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .related-insights li {
+      margin-bottom: 12px;
+    }
+
+    .related-insights a {
+      color: #0d5cc0;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .related-insights a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 34px;
+      color: #0d5cc0;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #071c36;
+      color: #cbd7e4;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .site-nav-links {
+        gap: 14px 18px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .article-hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .article-subtitle {
+        font-size: 1.05rem;
+      }
+
+      .site-nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="site-brand" href="../index.html">DemarkoCloud</a>
+
+      <div class="site-nav-links">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#assessment">Assessment</a>
+        <a href="../index.html#sample-assessment">Sample Report</a>
+        <a href="../index.html#projects">Case Studies</a>
+        <a href="../index.html#insights">Insights</a>
+        <a class="site-nav-cta" href="../index.html#consultation">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="article-hero">
+    <div class="article-hero-inner">
+
+      <div class="article-category">AWS COST</div>
+
+      <h1>Why Is My AWS Bill So High? 7 Places Small Businesses Should Check First</h1>
+
+      <p class="article-subtitle">
+        AWS costs can increase gradually as infrastructure grows. Before deleting
+        resources or resizing production systems, understand what is running,
+        what it costs, who depends on it, and why it exists.
+      </p>
+
+    </div>
+  </section>
+
+  <main class="article-container">
+
+    <p class="article-intro">
+      AWS makes it relatively easy to launch infrastructure. What can be harder is
+      understanding why the monthly bill keeps increasing.
+    </p>
+
+    <p>
+      Maybe your AWS environment started small. Over time, new EC2 instances were
+      added, storage grew, backups accumulated, databases changed, and additional
+      services were introduced.
+    </p>
+
+    <p>
+      Six months later, the AWS bill is noticeably higher, but no one is completely
+      sure why.
+    </p>
+
+    <p>
+      The wrong response is to immediately start deleting resources or downsizing
+      servers.
+    </p>
+
+    <p>
+      Before making changes, you need to understand what is running, what it costs,
+      who depends on it, and why it exists.
+    </p>
+
+    <div class="callout">
+      <strong>DemarkoCloud principle:</strong> Investigate first. Change second.
+      Cost optimization should begin with understanding the environment, not
+      immediately modifying production infrastructure.
+    </div>
+
+    <h2>1. EC2 Instances That May Be Oversized</h2>
+
+    <p>
+      EC2 is often one of the first places businesses look when AWS costs increase.
+    </p>
+
+    <p>
+      An instance may have been sized for expected growth, a temporary workload, or
+      requirements that no longer exist. If CPU, memory, and workload patterns
+      consistently show that the instance has more capacity than necessary,
+      rightsizing may reduce costs.
+    </p>
+
+    <p>
+      But utilization alone is not enough.
+    </p>
+
+    <p>
+      Before resizing an instance, determine what application depends on it, when
+      demand peaks, and what performance requirements must be maintained.
+    </p>
+
+    <p>
+      <strong>Investigate first. Resize second.</strong>
+    </p>
+
+    <h2>2. Resources That Are Running but No Longer Needed</h2>
+
+    <p>
+      Cloud environments change quickly.
+    </p>
+
+    <p>
+      Testing servers, old development environments, unused load balancers,
+      unattached storage, snapshots, and other resources can remain after a project
+      or migration is completed.
+    </p>
+
+    <p>
+      Individually, some of these resources may not look expensive. Collectively,
+      they can contribute to unnecessary monthly spending.
+    </p>
+
+    <p>
+      The important question is not simply:
+    </p>
+
+    <p>
+      <strong>“Is this resource being used?”</strong>
+    </p>
+
+    <p>
+      It is:
+    </p>
+
+    <p>
+      <strong>“Does the business still need this resource?”</strong>
+    </p>
+
+    <p>
+      Ownership and dependencies should be confirmed before anything is removed.
+    </p>
+
+    <h2>3. Storage That Keeps Growing</h2>
+
+    <p>
+      Storage costs can quietly increase over time.
+    </p>
+
+    <p>
+      S3 buckets may accumulate files indefinitely. EBS volumes can remain after
+      instances are removed. Snapshots and backups may be retained longer than
+      necessary.
+    </p>
+
+    <p>
+      A storage review should look at growth, retention requirements, access
+      patterns, lifecycle policies, and business or compliance requirements.
+    </p>
+
+    <p>
+      Deleting data simply because it is old is not a cost-optimization strategy.
+    </p>
+
+    <p>
+      Understanding why the data exists comes first.
+    </p>
+
+    <h2>4. RDS Databases That Cost More Than Expected</h2>
+
+    <p>
+      Managed databases provide tremendous value, but they can also become a
+      significant portion of an AWS bill.
+    </p>
+
+    <p>
+      Database instance size, storage, backups, high-availability configurations,
+      and workload requirements can all affect cost.
+    </p>
+
+    <p>
+      Before changing an RDS environment, determine whether its current configuration
+      supports production availability, recovery, performance, or other business
+      requirements.
+    </p>
+
+    <p>
+      A database that appears expensive may be expensive <strong>for a reason</strong>.
+    </p>
+
+    <h2>5. Data Transfer and Network Architecture</h2>
+
+    <p>
+      Sometimes the surprising cost is not the server.
+    </p>
+
+    <p>
+      It is the traffic.
+    </p>
+
+    <p>
+      Data moving between AWS services, Availability Zones, Regions, the internet,
+      or through certain network components can contribute to the bill.
+    </p>
+
+    <p>
+      This is why cost reviews should include architecture, not just a list of
+      expensive resources.
+    </p>
+
+    <p>
+      Understanding <strong>how applications communicate</strong> can reveal costs
+      that are not obvious when reviewing individual services.
+    </p>
+
+    <h2>6. Missing Cost Visibility</h2>
+
+    <p>
+      If nobody can explain which application, environment, team, or project is
+      generating AWS spending, the problem may be visibility rather than
+      infrastructure.
+    </p>
+
+    <p>
+      Consistent tagging and AWS cost-management tools can make it easier to
+      understand where spending originates.
+    </p>
+
+    <p>
+      Instead of asking:
+    </p>
+
+    <p>
+      <strong>“Why is AWS costing us $2,600 this month?”</strong>
+    </p>
+
+    <p>
+      A better environment allows you to ask:
+    </p>
+
+    <p>
+      <strong>
+        “Which workloads caused the increase from $1,700 to $2,600, and what changed?”
+      </strong>
+    </p>
+
+    <p>
+      That is a much easier question to investigate.
+    </p>
+
+    <h2>7. Architecture That Hasn't Been Reviewed as the Business Grew</h2>
+
+    <p>
+      An AWS environment that made sense two years ago may not be the right
+      architecture today.
+    </p>
+
+    <p>
+      Applications evolve. Traffic changes. Employees come and go. New services are
+      introduced. Temporary solutions become permanent.
+    </p>
+
+    <p>
+      Eventually, increasing costs may be a symptom of something larger:
+    </p>
+
+    <p>
+      <strong>
+        The environment has grown without being reviewed as a whole.
+      </strong>
+    </p>
+
+    <p>
+      At that point, optimizing one EC2 instance or deleting one snapshot is not
+      enough. It may be time to evaluate the architecture, operational practices,
+      security, reliability, and cost together.
+    </p>
+
+    <h2>Don't Start by Deleting Resources</h2>
+
+    <p>
+      When an AWS bill increases, it is tempting to immediately shut things down.
+    </p>
+
+    <p>
+      That can create a bigger problem than the bill itself.
+    </p>
+
+    <p>
+      Before changing production infrastructure:
+    </p>
+
+    <div class="callout">
+      <strong>
+        Ask → Listen → Investigate → Set Expectations → Recommend
+      </strong>
+    </div>
+
+    <p>
+      Understand the environment first. Identify the findings. Determine the
+      business impact. Then decide what should change.
+    </p>
+
+    <p>
+      That is the approach we use at DemarkoCloud.
+    </p>
+
+    <section class="article-cta">
+      <h2>Need Help Understanding Your AWS Environment?</h2>
+
+      <p>
+        If your AWS bill has been increasing and your team is not sure why,
+        DemarkoCloud can help you evaluate the environment before making
+        production changes. You can also start with the free Cloud &amp; AI
+        Readiness Assessment to get a high-level view of where your environment
+        stands.
+      </p>
+
+      <a class="cta-button" href="../index.html#assessment">
+        Take the Free Assessment
+      </a>
+    </section>
+
+    <section class="related-insights">
+      <h2>Related DemarkoCloud Insights</h2>
+
+      <ul>
+        <li>
+          <a href="aws-cost-optimization-small-business.html">
+            AWS Cost Optimization for Small Businesses
+          </a>
+        </li>
+
+        <li>
+          <a href="aws-architecture-review-small-business.html">
+            7 Signs Your AWS Environment Needs an Architecture Review
+          </a>
+        </li>
+
+        <li>
+          <a href="terraform-for-small-business.html">
+            Do You Really Need Terraform for a Small AWS Environment?
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <a class="back-link" href="../index.html#insights">
+      ← Back to DemarkoCloud Insights
+    </a>
+
+  </main>
+
+  <footer>
+    © 2026 DemarkoCloud. Practical Cloud, DevOps &amp; AI Infrastructure Consulting.
+  </footer>
+
+</body>
+</html>
